@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img
+          src="https://png2.cleanpng.com/dy/45e6cd34d6b60489f2a8f4ed3ac6a02e/L0KzQYm3VsEyN5pth5H0aYP2gLBuTgJwgZJxjOs2ZoLodX7zjBdwNZh3eeJxaXOwdLb6ifdvNWZnSddtMHXkRIHqUfM1NmI9TaoDNUG6QYa5WMc1PmM2UKQBNUOxgLBu/kisspng-royalty-free-logo-graphic-design-5b1ed0ea40c1c4.1858851715287462182653.png"
+          alt="Logo" height="60">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dịch vụ quảng cáo
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Sản phẩm</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Nền tảng
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Facebook</a></li>
+              <li><a class="dropdown-item" href="#">Youtube</a></li>
+              <li><a class="dropdown-item" href="#">Instagram</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hỗ Trợ khách hàng
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Câu hỏi thường gặp</a></li>
+              <li><a class="dropdown-item" href="#">Góp ý sản phẩm dịch vụ</a></li>
+              <li><a class="dropdown-item" href="#">liên hệ</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </li>
+          <div class="icon-container">
+            <li class="nav-link">
+              <a class="nav-link active text-white" aria-current="page" href="#"><i class="bi bi-facebook"></i></a>
+            </li>
+            <li class="nav-link">
+              <a class="nav-link active text-white" aria-current="page" href="#"><i class="bi bi-youtube"></i></a>
+            </li>
+            <li class="nav-link">
+              <a class="nav-link active text-white" aria-current="page" href="#"><i class="bi bi-tiktok"></i></a>
+            </li> 
+            <li class="nav-link">
+            <a class="nav-link active text-white" aria-current="page" href="#"><i class="bi bi-cart4"></i></a>
+          </li>
+          </div>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng Nhập</a></li>
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Đăng Ký</a></li>
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#userListModal">Xem Danh Sách Người Dùng</a></li>
+          </ul>
+        </div>
+      </nav>
+    
+      <!-- Modal đăng nhập -->
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="loginModalLabel">Đăng Nhập</h5>
+              <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" id="closeButton"></button>
+            </div>
+            <div class="modal-body">
+              <form id="loginForm">
+                <div class="form-group">
+                  <label for="loginUsername">Username:</label>
+                  <input type="text" class="form-control" id="loginUsername" required>
+                </div>
+                <div class="form-group">
+                  <label for="loginPassword">Password:</label>
+                  <input type="password" class="form-control" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Modal đăng ký -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="signupModalLabel">Đăng Ký</h5>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" id="closeButton"></button>
+          </div>
+          <div class="modal-body">
+            <form id="signupForm">
+              <div class="form-group">
+                <label for="signupUsername">Username:</label>
+                <input type="text" class="form-control" id="signupUsername" required>
+              </div>
+              <div class="form-group">
+                <label for="signupPassword">Password:</label>
+                <input type="password" class="form-control" id="signupPassword" required>
+              </div>
+              <div class="form-group">
+                <label for="userRole">Role:</label>
+                <select class="form-control" id="userRole" required>
+                  <option value="user">User</option>
+                  <option value="admin">Admin</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-success">Đăng Ký</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- Modal hiển thị danh sách người dùng -->
+      <div class="modal fade" id="userListModal" tabindex="-1" role="dialog" aria-labelledby="userListModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="userListModalLabel">Danh Sách Người Dùng</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Quyền</th>
+                    <th scope="col">Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="userListBody">
+                  <!-- Dữ liệu người dùng sẽ được thêm vào đây bằng JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <img src="https://vnpt.com.vn/Media/Images/30102023/1920x650.jpg?w=1920&mode=crop"
+          class="d-block w-100 img-thumbnail" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img
+          src="https://vnpt.com.vn/Media/Images/11092023/VNPT%20VinaPhone%20%C3%A2m%20nh%E1%BA%A1c%201.jpg?w=1920&mode=crop"
+          class="d-block w-100 img-thumbnail" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://vnpt.com.vn/Media/Images/20112023/speedtest%204_1920x650.jpg?w=1920&mode=crop"
+          class="d-block w-100 img-thumbnail" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div class="container">
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link disabled" aria-disabled="true">
+          <h5><i style="margin-right: 10px;" class="bi bi-list"></i>Các gói quảng cáo</h5>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="#">Giá rẻ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Tầm trung</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Cao cấp</a>
+      </li>
+    </ul>
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="product-box">
+          <h3>Gói 1</h3>
+          <h5>150.000Đ/ngày</h5>
+          <p><img src="https://vinhnv.com/wp-content/uploads/2015/05/FB-Ad-Logo21.png"></p>
+          <p>Khu vực: tùy chọn</p>
+
+          <button class="btn btn-primary add-to-cart">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="product-box">
+          <h3>Gói 1</h3>
+          <h5>150.000Đ/ngày</h5>
+          <p><img src="https://vinhnv.com/wp-content/uploads/2015/05/FB-Ad-Logo21.png"></p>
+          <p>Khu vực: tùy chọn</p>
+
+          <button class="btn btn-primary add-to-cart">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="product-box">
+          <h3>Gói 5</h3>
+          <h5>150.000Đ/ngày</h5>
+          <p><img src="https://vinhnv.com/wp-content/uploads/2015/05/FB-Ad-Logo21.png"></p>
+          <p>Khu vực: tùy chọn</p>
+
+          <button class="btn btn-primary add-to-cart">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="product-box">
+          <h3>Gói 5</h3>
+          <h5>150.000Đ/ngày</h5>
+          <p><img src="https://vinhnv.com/wp-content/uploads/2015/05/FB-Ad-Logo21.png"></p>
+          <p>Khu vực: tùy chọn</p>
+
+          <button class="btn btn-primary add-to-cart">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="product-box">
+          <h3>Gói 5</h3>
+          <h5>150.000Đ/ngày</h5>
+          <p><img src="https://vinhnv.com/wp-content/uploads/2015/05/FB-Ad-Logo21.png"></p>
+          <p>Khu vực: tùy chọn</p>
+
+          <button class="btn btn-primary add-to-cart">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="product-box">
+          <h3>Gói 5</h3>
+          <h5>150.000Đ/ngày</h5>
+          <p><img src="https://vinhnv.com/wp-content/uploads/2015/05/FB-Ad-Logo21.png"></p>
+          <p>Khu vực: tùy chọn</p>
+
+          <button class="btn btn-primary add-to-cart">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 text-center">
+    <button class="btn btn-primary btn-show-more">Xem thêm</button>
+  </div>
+  <footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+      <p>&copy; 2023 Your Company. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+<script src="index.js" defer></script>
+</html>
