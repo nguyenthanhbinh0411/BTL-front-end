@@ -75,6 +75,15 @@ svg#freepik_stories-online-ads.animated #freepik--Character--inject-1 {
     opacity: 0
 }
 
+.custom-container {
+    min-height: 85vh; 
+    padding: 20px;  
+}
+
+.custom-container h2{
+    margin-bottom: 50px;   
+}
+
 @keyframes slideUp {
     0% {
         opacity: 0;
@@ -134,3 +143,5 @@ svg#freepik_stories-online-ads.animated #freepik--Character--inject-1 {
         transform: scale(1);
     }
 }
+
+
