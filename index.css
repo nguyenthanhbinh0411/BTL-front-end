@@ -1,0 +1,136 @@
+body{
+    font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif;
+}
+svg#freepik_stories-online-ads:not(.animated) .animable {
+    opacity: 0;
+}
+
+svg#freepik_stories-online-ads.animated #freepik--Floor--inject-1 {
+    animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) slideUp;
+    animation-delay: -0.1s;
+    opacity: 0
+}
+
+svg#freepik_stories-online-ads.animated #freepik--Window--inject-1 {
+    animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) slideRight;
+    animation-delay: 0.0s;
+}
+
+svg#freepik_stories-online-ads.animated #freepik--Device--inject-1 {
+    animation: 2.0s 1 forwards linear slideUp;
+    animation-delay: 0s;
+}
+
+svg#freepik_stories-online-ads.animated #freepik--Screen--inject-1 {
+    animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) slideLeft;
+    animation-delay: 0.1s;
+    opacity: 0
+}
+
+svg#freepik_stories-online-ads.animated #freepik--Plants--inject-1 {
+    animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) slideDown;
+    animation-delay: 0.1s;
+    opacity: 0
+}
+
+svg#freepik_stories-online-ads.animated #freepik--Coins--inject-1 {
+    animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) slideRight;
+    animation-delay: 0.1s;
+    opacity: 0
+}
+
+svg#freepik_stories-online-ads.animated #freepik--Gears--inject-1 {
+    animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) slideDown;
+    animation-delay: 0s;
+}
+
+svg#freepik_stories-online-ads.animated #freepik--ad-4--inject-1 {
+    animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) slideDown;
+    animation-delay: 0.1s;
+    opacity: 0
+}
+
+svg#freepik_stories-online-ads.animated #freepik--ad-3--inject-1 {
+    animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) zoomIn;
+    animation-delay: 0.2s;
+    opacity: 0
+}
+
+svg#freepik_stories-online-ads.animated #freepik--ad-2--inject-1 {
+    animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) zoomIn;
+    animation-delay: 0.2s;
+    opacity: 0
+}
+
+svg#freepik_stories-online-ads.animated #freepik--ad-1--inject-1 {
+    animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) zoomIn;
+    animation-delay: 0.2s;
+    opacity: 0
+}
+
+svg#freepik_stories-online-ads.animated #freepik--Character--inject-1 {
+    animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) slideDown;
+    animation-delay: 0.1s;
+    opacity: 0
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: inherit;
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

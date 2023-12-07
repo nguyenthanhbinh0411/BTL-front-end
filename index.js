@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
 
 
@@ -20,6 +22,29 @@ $(document).ready(function () {
 
   // Xử lý đăng nhập
   $('#loginForm').submit(function (event) {
+
+    event.preventDefault();
+    var username = $('#loginUsername').val();
+    var password = $('#loginPassword').val();
+
+    // Kiểm tra tài khoản và mật khẩu với danh sách người dùng
+    var users = JSON.parse(localStorage.getItem('users')) || [];
+    var user = users.find(function (u) {
+      return u.username === username && u.password === password;
+    });
+
+    if (user) {
+      // Đăng nhập thành công
+      alert('Đăng nhập thành công với tài khoản: ' + username);
+
+      // Kiểm tra vai trò của người dùng
+      if (user.role === 'admin') {
+        // Nếu là admin, hiển thị nút Xem Danh Sách Người Dùng
+        $('.dropdown-menu').html('<li class="logout-btn"><a class="dropdown-item" href="#" onclick="logout()">Đăng Xuất</a></li><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#userListModal">User list</a></li>');
+      } else {
+        // Nếu là user, ẩn nút Xem Danh Sách Người Dùng
+        $('.dropdown-menu').html('<li class="logout-btn"><a class="dropdown-item" href="#" onclick="logout()">Đăng Xuất</a></li>');
+=======
       event.preventDefault();
       var username = $('#loginUsername').val();
       var password = $('#loginPassword').val();
@@ -95,6 +120,24 @@ $(document).ready(function () {
 
   // Xử lý sự kiện click cho nút Xem Danh Sách Người Dùng
   $('#userListModal').on('show.bs.modal', function () {
+
+    // Lấy danh sách người dùng từ localStorage
+    var users = JSON.parse(localStorage.getItem('users')) || [];
+
+    // Hiển thị danh sách người dùng trong bảng
+    var userListBody = $('#userListBody');
+    userListBody.empty(); // Xóa dữ liệu cũ
+
+    if (users.length > 0) {
+      users.forEach(function (user, index) {
+        userListBody.append('<tr><th scope="row">' + (index + 1) + '</th><td>' + user.username + '</td><td>' + user.password + '</td><td>' + user.role + '</td><td><button class="btn btn-danger btn-sm" onclick="deleteUser(' + index + ')">Xóa</button></td></tr>');
+      });
+    } else {
+      // Không có người dùng
+      userListBody.append('<tr><td colspan="5">Không có người dùng.</td></tr>');
+    }
+  });
+=======
       // Lấy danh sách người dùng từ localStorage
       var users = JSON.parse(localStorage.getItem('users')) || [];
 
@@ -119,7 +162,8 @@ $(document).ready(function () {
   });
 
 
-  // Ẩn modal
+
+// Ẩn modal
   $('#LGcloseButton').click(function () {
       $('#loginModal').modal('hide');
   });
@@ -163,8 +207,10 @@ function deleteUser(index) {
 // Hàm đăng xuất
 function logout() {
   // Ẩn nút Đăng Xuất, hiển thị nút Đăng Nhập và Đăng Ký
-  $('.dropdown-menu').html('<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-box-arrow-in-right"></i> Đăng Nhập</a></li><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signupModal"><i class="bi bi-person-plus-fill"></i> Đăng Ký</a></li>');
+
+  $('#dropdown-menu').html('<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng Nhập</a></li><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Đăng Ký</a></li><li class="logout-btn" style="display:none;"><a class="dropdown-item" href="#" onclick="logout()">Đăng Xuất</a></li><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#userListModal">User list</a></li>');
+
+  $('.dropdown-menu').html('<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-box-arrow-in-right"></i> Đăng Nhập</a></li><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signupModal"><i class="bi bi-person-plus-fill"></i> Đăng Ký</a></
 
   // Ẩn biểu tượng người dùng và hiển thị lại biểu tượng mặc định
-  $('.nav-link.dropdown-toggle').html('<i class="bi bi-person-circle"></i>');
-}
+  $('.nav-link.dropdown-toggle').html('<i class="bi bi-person-circle"></i>');}
