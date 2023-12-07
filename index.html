@@ -27,7 +27,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dịch vụ quảng cáo
@@ -40,16 +40,6 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Nền tảng
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Facebook</a></li>
-              <li><a class="dropdown-item" href="#">Youtube</a></li>
-              <li><a class="dropdown-item" href="#">Instagram</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Hỗ Trợ khách hàng
             </a>
             <ul class="dropdown-menu">
@@ -58,34 +48,22 @@
               <li><a class="dropdown-item" href="#">liên hệ</a></li>
             </ul>
           </li>
-          <li class="nav-item">
+          <li class="nav-item me-1">
             <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
             </form>
           </li>
-          <div class="icon-container">
-            <li class="nav-link">
-              <a class="nav-link active text-white" aria-current="page" href="#"><i class="bi bi-facebook"></i></a>
-            </li>
-            <li class="nav-link">
-              <a class="nav-link active text-white" aria-current="page" href="#"><i class="bi bi-youtube"></i></a>
-            </li>
-            <li class="nav-link">
-              <a class="nav-link active text-white" aria-current="page" href="#"><i class="bi bi-tiktok"></i></a>
-            </li> 
-            <li class="nav-link">
-            <a class="nav-link active text-white" aria-current="page" href="#"><i class="bi bi-cart4"></i></a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i> Tài khoản
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-box-arrow-in-right"></i> Đăng Nhập</a></li>
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signupModal"><i class="bi bi-person-plus-fill"></i> Đăng Ký</a></li>
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#userListModal">Xem Danh Sách Người Dùng</a></li>
+            </ul>
           </li>
-          </div>
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-person-circle"></i>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng Nhập</a></li>
-            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Đăng Ký</a></li>
-            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#userListModal">Xem Danh Sách Người Dùng</a></li>
-          </ul>
         </div>
       </nav>
     
@@ -96,7 +74,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="loginModalLabel">Đăng Nhập</h5>
-              <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" id="closeButton"></button>
+              <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" id="LGcloseButton"></button>
             </div>
             <div class="modal-body">
               <form id="loginForm">
@@ -108,7 +86,7 @@
                   <label for="loginPassword">Password:</label>
                   <input type="password" class="form-control" id="loginPassword" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+                <button type="submit" class="btn btn-primary mt-3">Đăng Nhập</button>
               </form>
             </div>
           </div>
@@ -121,10 +99,18 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="signupModalLabel">Đăng Ký</h5>
-            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" id="closeButton"></button>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" id="SncloseButton"></button>
           </div>
           <div class="modal-body">
             <form id="signupForm">
+              <div class="form-group">
+                <label for="signupUsername">Email:</label>
+                <input type="text" class="form-control" id="signupUsername" required>
+              </div>
+              <div class="form-group">
+                <label for="signupUsername">Số điện thoại:</label>
+                <input type="text" class="form-control" id="signupUsername" required>
+              </div>
               <div class="form-group">
                 <label for="signupUsername">Username:</label>
                 <input type="text" class="form-control" id="signupUsername" required>
@@ -138,9 +124,9 @@
                 <select class="form-control" id="userRole" required>
                   <option value="user">User</option>
                   <option value="admin">Admin</option>
-                </select>
+                </select> 
               </div>
-              <button type="submit" class="btn btn-success">Đăng Ký</button>
+              <button type="submit" class="btn btn-success mt-3 ms-auto">Đăng Ký</button>
             </form>
           </div>
         </div>
@@ -153,9 +139,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="userListModalLabel">Danh Sách Người Dùng</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" id="ulcloseButton"></button>
             </div>
             <div class="modal-body">
               <table class="table">
@@ -176,116 +160,7 @@
           </div>
         </div>
       </div>
-  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="10000">
-        <img src="https://vnpt.com.vn/Media/Images/30102023/1920x650.jpg?w=1920&mode=crop"
-          class="d-block w-100 img-thumbnail" alt="...">
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img
-          src="https://vnpt.com.vn/Media/Images/11092023/VNPT%20VinaPhone%20%C3%A2m%20nh%E1%BA%A1c%201.jpg?w=1920&mode=crop"
-          class="d-block w-100 img-thumbnail" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://vnpt.com.vn/Media/Images/20112023/speedtest%204_1920x650.jpg?w=1920&mode=crop"
-          class="d-block w-100 img-thumbnail" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-  <div class="container">
-    <ul class="nav justify-content-center">
-      <li class="nav-item">
-        <a class="nav-link disabled" aria-disabled="true">
-          <h5><i style="margin-right: 10px;" class="bi bi-list"></i>Các gói quảng cáo</h5>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="#">Giá rẻ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Tầm trung</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Cao cấp</a>
-      </li>
-    </ul>
-    <div class="row">
-      <div class="col-lg-4 col-md-6">
-        <div class="product-box">
-          <h3>Gói 1</h3>
-          <h5>150.000Đ/ngày</h5>
-          <p><img src="https://vinhnv.com/wp-content/uploads/2015/05/FB-Ad-Logo21.png"></p>
-          <p>Khu vực: tùy chọn</p>
 
-          <button class="btn btn-primary add-to-cart">Thêm vào giỏ hàng</button>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <div class="product-box">
-          <h3>Gói 1</h3>
-          <h5>150.000Đ/ngày</h5>
-          <p><img src="https://vinhnv.com/wp-content/uploads/2015/05/FB-Ad-Logo21.png"></p>
-          <p>Khu vực: tùy chọn</p>
-
-          <button class="btn btn-primary add-to-cart">Thêm vào giỏ hàng</button>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <div class="product-box">
-          <h3>Gói 5</h3>
-          <h5>150.000Đ/ngày</h5>
-          <p><img src="https://vinhnv.com/wp-content/uploads/2015/05/FB-Ad-Logo21.png"></p>
-          <p>Khu vực: tùy chọn</p>
-
-          <button class="btn btn-primary add-to-cart">Thêm vào giỏ hàng</button>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="product-box">
-          <h3>Gói 5</h3>
-          <h5>150.000Đ/ngày</h5>
-          <p><img src="https://vinhnv.com/wp-content/uploads/2015/05/FB-Ad-Logo21.png"></p>
-          <p>Khu vực: tùy chọn</p>
-
-          <button class="btn btn-primary add-to-cart">Thêm vào giỏ hàng</button>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="product-box">
-          <h3>Gói 5</h3>
-          <h5>150.000Đ/ngày</h5>
-          <p><img src="https://vinhnv.com/wp-content/uploads/2015/05/FB-Ad-Logo21.png"></p>
-          <p>Khu vực: tùy chọn</p>
-
-          <button class="btn btn-primary add-to-cart">Thêm vào giỏ hàng</button>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="product-box">
-          <h3>Gói 5</h3>
-          <h5>150.000Đ/ngày</h5>
-          <p><img src="https://vinhnv.com/wp-content/uploads/2015/05/FB-Ad-Logo21.png"></p>
-          <p>Khu vực: tùy chọn</p>
-
-          <button class="btn btn-primary add-to-cart">Thêm vào giỏ hàng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-12 text-center">
-    <button class="btn btn-primary btn-show-more">Xem thêm</button>
-  </div>
   <footer class="bg-dark text-white text-center py-3">
     <div class="container">
       <p>&copy; 2023 Your Company. All rights reserved.</p>
