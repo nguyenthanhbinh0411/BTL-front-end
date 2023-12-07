@@ -1,23 +1,5 @@
+
 $(document).ready(function () {
-  // Sự kiện click cho nav-item.dropdown
-  $('.nav-item.dropdown').click(function (e) {
-    e.preventDefault();
-
-    // Hiển thị hoặc ẩn dropdown-menu
-    $(this).find('.dropdown-menu').slideToggle();
-  });
-
-  var hiddenProducts = $('.product-box:gt(2)').hide();
-
-  $('.btn-show-more').click(function () {
-    hiddenProducts.slice(0, 3).fadeIn();
-
-    hiddenProducts = hiddenProducts.slice(3);
-
-    if (hiddenProducts.length === 0) {
-      $('.btn-show-more').hide();
-    }
-  });
 
   // Xử lý khi modal đăng nhập được đóng
   $('#loginModal').on('hidden.bs.modal', function () {
@@ -52,7 +34,7 @@ $(document).ready(function () {
       // Kiểm tra vai trò của người dùng
       if (user.role === 'admin') {
         // Nếu là admin, hiển thị nút Xem Danh Sách Người Dùng
-        $('.dropdown-menu').html('<li class="logout-btn"><a class="dropdown-item" href="#" onclick="logout()">Đăng Xuất</a></li><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#userListModal">Xem Danh Sách Người Dùng</a></li>');
+        $('.dropdown-menu').html('<li class="logout-btn"><a class="dropdown-item" href="#" onclick="logout()">Đăng Xuất</a></li><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#userListModal">User list</a></li>');
       } else {
         // Nếu là user, ẩn nút Xem Danh Sách Người Dùng
         $('.dropdown-menu').html('<li class="logout-btn"><a class="dropdown-item" href="#" onclick="logout()">Đăng Xuất</a></li>');
@@ -160,7 +142,7 @@ function deleteUser(index) {
 // Hàm đăng xuất
 function logout() {
   // Ẩn nút Đăng Xuất, hiển thị nút Đăng Nhập và Đăng Ký
-  $('.dropdown-menu').html('<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng Nhập</a></li><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Đăng Ký</a></li><li class="logout-btn" style="display:none;"><a class="dropdown-item" href="#" onclick="logout()">Đăng Xuất</a></li><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#userListModal">Xem Danh Sách Người Dùng</a></li>');
+  $('#dropdown-menu').html('<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng Nhập</a></li><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Đăng Ký</a></li><li class="logout-btn" style="display:none;"><a class="dropdown-item" href="#" onclick="logout()">Đăng Xuất</a></li><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#userListModal">User list</a></li>');
 
   // Ẩn biểu tượng người dùng và hiển thị lại biểu tượng mặc định
   $('.nav-link.dropdown-toggle').html('<i class="bi bi-person-circle"></i>');}
