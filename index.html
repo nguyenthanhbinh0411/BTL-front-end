@@ -57,109 +57,117 @@
           <li class="nav-item dropdown me-5">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-person-circle"></i> Tài khoản
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-box-arrow-in-right"></i> Đăng Nhập</a></li>
-              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signupModal"><i class="bi bi-person-plus-fill"></i> Đăng Ký</a></li>
-              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#userListModal">User list </a></li>
-            </ul>
+          </a>
+          <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"><i
+                          class="bi bi-box-arrow-in-right"></i> Đăng Nhập</a></li>
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signupModal"><i
+                          class="bi bi-person-plus-fill"></i> Đăng Ký</a></li>
+          </ul>
           </li>
-        </div>
-      </nav>
-    
-      <!-- Modal đăng nhập -->
-      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-sm" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="loginModalLabel">Đăng Nhập</h5>
-              <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" id="LGcloseButton"></button>
-            </div>
-            <div class="modal-body">
-              <form id="loginForm">
-                <div class="form-group">
-                  <label for="loginUsername">Username:</label>
-                  <input type="text" class="form-control" id="loginUsername" required>
-                </div>
-                <div class="form-group">
-                  <label for="loginPassword">Password:</label>
-                  <input type="password" class="form-control" id="loginPassword" required>
-                </div>
-                <button type="submit" class="btn btn-primary mt-3">Đăng Nhập</button>
-              </form>
-            </div>
           </div>
-        </div>
-      </div>
-    
-      <!-- Modal đăng ký -->
-    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="signupModalLabel">Đăng Ký</h5>
-            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" id="SncloseButton"></button>
+          </nav>
+      
+          <!-- Modal đăng nhập -->
+          <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-sm" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="loginModalLabel">Đăng Nhập</h5>
+                          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
+                              id="LGcloseButton"></button>
+                      </div>
+                      <div class="modal-body">
+                          <form id="loginForm">
+                              <div class="form-group">
+                                  <label for="loginUsername">Username:</label>
+                                  <input type="text" class="form-control" id="loginUsername" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="loginPassword">Password:</label>
+                                  <input type="password" class="form-control" id="loginPassword" required>
+                              </div>
+                              <button type="submit" class="btn btn-primary mt-3">Đăng Nhập</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <div class="modal-body">
-            <form id="signupForm">
-              <div class="form-group">
-                <label for="signupUsername">Email:</label>
-                <input type="text" class="form-control" id="signupUsername" required>
+      
+          <!-- Modal đăng ký -->
+          <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-sm" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="signupModalLabel">Đăng Ký</h5>
+                          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
+                              id="SncloseButton"></button>
+                      </div>
+                      <div class="modal-body">
+                          <form id="signupForm">
+                              <div class="form-group">
+                                  <label for="signupEmail">Email:</label>
+                                  <input type="email" class="form-control" id="signupEmail" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="signupPhoneNumber">Số điện thoại:</label>
+                                  <input type="tel" class="form-control" id="signupPhoneNumber" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="signupUsername">Username:</label>
+                                  <input type="text" class="form-control" id="signupUsername" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="signupPassword">Password:</label>
+                                  <input type="password" class="form-control" id="signupPassword" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="userRole">Role:</label>
+                                  <select class="form-control" id="userRole" required>
+                                      <option value="user">User</option>
+                                      <option value="admin">Admin</option>
+                                  </select>
+                              </div>
+                              <button type="submit" class="btn btn-success mt-3 ms-auto">Đăng Ký</button>
+                          </form>
+                      </div>
+                  </div>
               </div>
-              <div class="form-group">
-                <label for="signupUsername">Số điện thoại:</label>
-                <input type="text" class="form-control" id="signupUsername" required>
-              </div>
-              <div class="form-group">
-                <label for="signupUsername">Username:</label>
-                <input type="text" class="form-control" id="signupUsername" required>
-              </div>
-              <div class="form-group">
-                <label for="signupPassword">Password:</label>
-                <input type="password" class="form-control" id="signupPassword" required>
-              </div>
-              <div class="form-group">
-                <label for="userRole">Role:</label>
-                <select class="form-control" id="userRole" required>
-                  <option value="user">User</option>
-                  <option value="admin">Admin</option>
-                </select> 
-              </div>
-              <button type="submit" class="btn btn-success mt-3 ms-auto">Đăng Ký</button>
-            </form>
           </div>
-        </div>
-      </div>
-    </div>
-      <!-- Modal hiển thị danh sách người dùng -->
-      <div class="modal fade" id="userListModal" tabindex="-1" role="dialog" aria-labelledby="userListModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="userListModalLabel">Danh Sách Người Dùng</h5>
-              <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" id="ulcloseButton"></button>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">STT</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Password</th>
-                    <th scope="col">Quyền</th>
-                    <th scope="col">Thao tác</th>
-                  </tr>
-                </thead>
-                <tbody id="userListBody">
-                  <!-- Dữ liệu người dùng sẽ được thêm vào đây bằng JavaScript -->
-                </tbody>
-              </table>
-            </div>
+      
+          <!-- Modal hiển thị danh sách người dùng -->
+          <div class="modal fade" id="userListModal" tabindex="-1" role="dialog" aria-labelledby="userListModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="userListModalLabel">Danh Sách Người Dùng</h5>
+                          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
+                              id="ulcloseButton"></button>
+                      </div>
+                      <div class="modal-body">
+                          <table class="table">
+                              <thead>
+                                  <tr>
+                                      <th scope="col">STT</th>
+                                      <th scope="col">Username</th>
+                                      <th scope="col">Password</th>
+                                      <th scope="col">Quyền</th>
+                                      <th scope="col">Số điện thoai</th>
+                                      <th scope="col">Email</th>
+                                      <th scope="col">Thao tác</th>
+                                  </tr>
+                              </thead>
+                              <tbody id="userListBody">
+                                  <!-- Dữ liệu người dùng sẽ được thêm vào đây bằng JavaScript -->
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
-      </div>
 
   <footer class="bg-dark text-white text-center py-3">
     <div class="container">
