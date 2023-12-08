@@ -1,11 +1,9 @@
 body{
-  background-color: white;
+  font-family: 'Poppins', sans-serif;
 }
-body {
-  font-family: 'Poppin', sans-serif;
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Thêm đổ bóng */
 }
-
-
 svg#freepik_stories-online-ads:not(.animated) .animable {
   opacity: 0;
 }
