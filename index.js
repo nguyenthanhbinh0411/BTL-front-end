@@ -165,4 +165,4 @@ function deleteUser(index) {
   
       // Ẩn biểu tượng người dùng và hiển thị lại biểu tượng mặc định
       $('.nav-link.dropdown-toggle').html('<i class="bi bi-person-circle"></i>');
-  };
+  }
