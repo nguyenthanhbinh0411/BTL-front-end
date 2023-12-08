@@ -278,7 +278,6 @@ $(document).ready(function () {
   $('#ulcloseButton').click(function () {
     $('#userListModal').modal('hide');
   });
-});
 
 // Hàm lưu thông tin tài khoản vào localStorage
 function saveCredentials(username, password) {
