@@ -2,7 +2,7 @@ body{
   font-family: 'Poppins', sans-serif;
 }
 .text-shadow {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Thêm đổ bóng */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 svg#freepik_stories-online-ads:not(.animated) .animable {
   opacity: 0;
