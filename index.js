@@ -130,7 +130,6 @@ $(document).ready(function () {
     $('#userListModal').modal('hide');
   });
 });
-
 // Hàm lưu thông tin tài khoản vào localStorage
 function saveCredentials(username, password) {
   // Kiểm tra xem đã có danh sách người dùng trong localStorage chưa
