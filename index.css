@@ -4,6 +4,20 @@ body{
 .text-shadow {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+#myButton {
+  position: relative;
+  animation: moveButton 1s infinite alternate; /* Hiệu ứng đi qua đi lại */
+}
+
+/* Định nghĩa keyframes cho hiệu ứng */
+@keyframes moveButton {
+  from {
+      left: 0;
+  }
+  to {
+      left: 20px; /* Điều chỉnh khoảng cách di chuyển */
+  }
+}
 svg#freepik_stories-online-ads:not(.animated) .animable {
   opacity: 0;
 }
