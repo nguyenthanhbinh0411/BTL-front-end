@@ -6,16 +6,16 @@ body{
 }
 #myButton {
   position: relative;
-  animation: moveButton 1s infinite alternate; /* Hiệu ứng đi qua đi lại */
+  animation: moveButton 1s infinite alternate; 
 }
 
 /* Định nghĩa keyframes cho hiệu ứng */
 @keyframes moveButton {
   from {
-      left: 0;
+      bottom: 0;
   }
   to {
-      left: 20px; /* Điều chỉnh khoảng cách di chuyển */
+      bottom: 20px; /* Điều chỉnh khoảng cách di chuyển */
   }
 }
 svg#freepik_stories-online-ads:not(.animated) .animable {
