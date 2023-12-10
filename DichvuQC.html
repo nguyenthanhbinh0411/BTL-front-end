@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HBT Ads</title>
+  <link rel="icon"
+    href="https://png2.cleanpng.com/dy/45e6cd34d6b60489f2a8f4ed3ac6a02e/L0KzQYm3VsEyN5pth5H0aYP2gLBuTgJwgZJxjOs2ZoLodX7zjBdwNZh3eeJxaXOwdLb6ifdvNWZnSddtMHXkRIHqUfM1NmI9TaoDNUG6QYa5WMc1PmM2UKQBNUOxgLBu/kisspng-royalty-free-logo-graphic-design-5b1ed0ea40c1c4.1858851715287462182653.png"
+    type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="DichvuQC.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top bg-body">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img
+          src="https://png2.cleanpng.com/dy/45e6cd34d6b60489f2a8f4ed3ac6a02e/L0KzQYm3VsEyN5pth5H0aYP2gLBuTgJwgZJxjOs2ZoLodX7zjBdwNZh3eeJxaXOwdLb6ifdvNWZnSddtMHXkRIHqUfM1NmI9TaoDNUG6QYa5WMc1PmM2UKQBNUOxgLBu/kisspng-royalty-free-logo-graphic-design-5b1ed0ea40c1c4.1858851715287462182653.png"
+          alt="Logo" height="40" class="mr-2 me-2">
+        <span class="h4 align-middle">HBT Ads</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " href="#" aria-expanded="false">
+              <i class="bi bi-star-fill"></i> Dịch vụ quảng cáo</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hỗ trợ khách hàng </i>
+            </a>
+            <ul class="dropdown-menu" id="dropdown-menu1">
+              <li><a class="dropdown-item" href="#"><i class="bi bi-question-circle"></i> Câu hỏi thường gặp</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#"><i class="bi bi-chat-dots"></i> Góp ý sản phẩm dịch vụ</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#"><i class="bi bi-envelope"></i> Liên hệ</a></li>
+            </ul>
+          </li>
+          <li class="nav-item me-1">
+            <form class="d-flex" role="search">
+              <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+          </li>
+          <li class="nav-item dropdown me-5">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i> Tài khoản
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"><i
+                    class="bi bi-box-arrow-in-right"></i> Đăng Nhập</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signupModal"><i
+                    class="bi bi-person-plus-fill"></i> Đăng Ký</a></li>
+            </ul>
+          </li>
+      </div>
+  </nav>
+
+
+  <!-- Modal đăng nhập -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Đăng Nhập</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" id="LGcloseButton"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="loginUsername">Username:</label>
+              <input type="text" class="form-control" id="loginUsername" required>
+            </div>
+            <div class="form-group">
+              <label for="loginPassword">Password:</label>
+              <input type="password" class="form-control" id="loginPassword" required>
+            </div>
+            <div class="text-center mt-2">
+              <button type="submit" class="btn btn-primary mt-3">Đăng Nhập</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal đăng ký -->
+  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signupModalLabel">Đăng Ký</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" id="SncloseButton"></button>
+        </div>
+        <div class="modal-body">
+          <form id="signupForm">
+            <div class="form-group">
+              <label for="signupEmail">Email:</label>
+              <input type="email" class="form-control" id="signupEmail" required>
+            </div>
+            <div class="form-group">
+              <label for="signupPhoneNumber">Số điện thoại:</label>
+              <input type="tel" class="form-control" id="signupPhoneNumber" required>
+            </div>
+            <div class="form-group">
+              <label for="signupUsername">Username:</label>
+              <input type="text" class="form-control" id="signupUsername" required>
+            </div>
+            <div class="form-group">
+              <label for="signupPassword">Password:</label>
+              <input type="password" class="form-control" id="signupPassword" required>
+            </div>
+            <div class="form-group">
+              <label for="userRole">Role:</label>
+              <select class="form-control" id="userRole" required>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
+            <div class="text-center mt-2">
+              <button type="submit" class="btn btn-success mt-3 ms-auto">Đăng Ký</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal hiển thị danh sách người dùng -->
+  <div class="modal fade" id="userListModal" tabindex="-1" role="dialog" aria-labelledby="userListModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="userListModalLabel">Danh Sách Người Dùng</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" id="ulcloseButton"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Username</th>
+                <th scope="col">Password</th>
+                <th scope="col">Quyền</th>
+                <th scope="col">Số điện thoai</th>
+                <th scope="col">Email</th>
+                <th scope="col">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="userListBody">
+              <!-- Dữ liệu người dùng sẽ được thêm vào đây bằng JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="carouselExampleInterval" class="carousel slide mt-5 d-none d-md-block" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+
+    </div>
+    <div class="carousel-inner mt-2">
+      <div class="carousel-item active" data-bs-interval="5000">
+        <img src="https://bizmanmedia.vn/wp-content/uploads/2022/05/TikTok.jpg" class="d-block w-90 img-thumbnail"
+          alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="https://bizmanmedia.vn/wp-content/uploads/2022/05/FB.jpg" class="d-block w-90 img-thumbnail"
+          alt="...">
+      </div>
+      <div class="carousel-item " data-bs-interval="5000">
+        <img src="https://bizmanmedia.vn/wp-content/uploads/2022/05/YT.jpg" class="d-block w-90 img-thumbnail"
+          alt="...">
+      </div>
+      <div class="carousel-item " data-bs-interval="5000">
+        <img src="https://bizmanmedia.vn/wp-content/uploads/2022/05/Zalo.jpg" class="d-block w-90 img-thumbnail"
+          alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div class="container-fluid mt-5 custom-container">
+    <div class="row mt-3">
+      <hr> 
+      <div class="col-md-1 "></div>
+      <div class="col-md-9 mt-2">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-black"><i class="bi bi-house-door"></i> Home </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Dịch vụ quảng cáo</li>
+          </ol>       
+        </nav>
+      </div>
+      <div class="col-md-1 ">
+        <div class="col-md-2">
+          <button class="btn text-nowrap" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight" data-bs-offset="10">Lọc <i class="bi bi-filter-right"></i></button>
+          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasRightLabel">Bộ lọc tìm kiếm <i class="bi bi-funnel"></i></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <hr>
+            <div class="offcanvas-body">
+              <div class="row">
+                <div class="col-md-12 mb-2">
+                  <h6>Nền tảng</h6>
+                  <div class="form-check">
+                    <input class="form-check-input platform-checkbox" type="checkbox" value="youtube"
+                      id="platformYoutube">
+                    <label class="form-check-label" for="platformYoutube">Youtube</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input platform-checkbox" type="checkbox" value="facebook"
+                      id="platformFacebook">
+                    <label class="form-check-label" for="platformFacebook">Facebook</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input platform-checkbox" type="checkbox" value="google"
+                      id="platformGoogle">
+                    <label class="form-check-label" for="platformGoogle">Google</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input platform-checkbox" type="checkbox" value="tiktok"
+                      id="platformTiktok">
+                    <label class="form-check-label" for="platformTiktok">Tiktok</label>
+                  </div>
+
+                  <div class="form-check">
+                    <input class="form-check-input platform-checkbox" type="checkbox" value="tiktok" id="platformZalo">
+                    <label class="form-check-label" for="platformZalo">Zalo</label>
+                  </div>
+                </div>
+                <hr>
+                <div class="col-md-12 mb-2">
+                  <h6>Thời gian thuê</h6>
+                  <div class="form-check">
+                    <input class="form-check-input duration-checkbox" type="checkbox" value="1month"
+                      id="duration1Month">
+                    <label class="form-check-label" for="duration1Month">1 tháng</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input duration-checkbox" type="checkbox" value="2months"
+                      id="duration2Months">
+                    <label class="form-check-label" for="duration2Months">2 tháng</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input duration-checkbox" type="checkbox" value="4months"
+                      id="duration4Months">
+                    <label class="form-check-label" for="duration4Months">4 tháng</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input duration-checkbox" type="checkbox" value="8months"
+                      id="duration8Months">
+                    <label class="form-check-label" for="duration8Months">8 tháng</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input duration-checkbox" type="checkbox" value="1year" id="duration1Year">
+                    <label class="form-check-label" for="duration1Year">1 năm</label>
+                  </div>
+                </div>
+                <hr>
+                <div class="col-md-10">
+                  <h6>Khoảng giá</h6>
+                  <div class="mb-2">
+                    <label for="priceRangeFrom" class="form-label">Từ</label>
+                    <input type="text" class="form-control" id="priceRangeFrom" placeholder="Nhập giá từ">
+                  </div>
+                  <div class="mb-2">
+                    <label for="priceRangeTo" class="form-label">Đến</label>
+                    <input type="text" class="form-control" id="priceRangeTo" placeholder="Nhập giá đến">
+                  </div>
+                  <button class="btn btn-primary mt-2 text-nowrap" id="applyFilterBtn">Áp dụng</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1 "></div>
+      <hr>
+      <div class="container-fluid">
+        <div class="row mt-5 row-cols-1 row-cols-md-3 g-4">
+          <div class="col-md-2"></div>
+          <div class="col-md-2">
+            <div class="card h-100" data-platform="facebook" data-duration="1month" data-price="1000000">
+              <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top img-fluid"
+                alt="Hollywood Sign on The Hill" />
+              <div class="card-body">
+                <h5 class="card-title">Facebook</h5>
+                <p class="card-text">
+                  1.000.000
+                </p>
+                <p>Thời hạn: 1 tháng</p>
+                <p><button type="button" class="btn btn-primary">Đặt ngay</button></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="card h-100" data-platform="tiktok" data-duration="4months" data-price="5000000">
+              <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top img-fluid"
+                alt="Hollywood Sign on The Hill" />
+              <div class="card-body">
+                <h5 class="card-title">TikTok</h5>
+                <p class="card-text">
+                  5.000.000
+                  <p>Thời hạn: 4 tháng</p>
+                </p>
+                <p><button type="button" class="btn btn-primary">Đặt ngay</button></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="card h-100" data-platform="youtube" data-duration="2months" data-price="3000000">
+              <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top img-fluid"
+                alt="Hollywood Sign on The Hill" />
+              <div class="card-body">
+                <h5 class="card-title">Youtube</h5>
+                <p class="card-text">
+                  3.000.000
+                </p>
+                <p>Thời hạn: 2 tháng</p>
+                <p><button type="button" class="btn btn-primary">Đặt ngay</button></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="card h-100" data-platform="google" data-duration="1year" data-price="10000000">
+              <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top img-fluid"
+                alt="Hollywood Sign on The Hill" />
+              <div class="card-body">
+                <h5 class="card-title">Google</h5>
+                <p class="card-text">
+                  10.000.000
+                </p>
+                <p>Thời hạn: 1 năm</p>
+                <p><button type="button" class="btn btn-primary">Đặt ngay</button></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+</body>
+<script src="index.js" defer></script>
+</html>
