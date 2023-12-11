@@ -71,23 +71,58 @@ $(document).ready(function () {
     }
   }
 });
+$(document).ready(function () {
+  // Lấy thông tin người dùng từ localStorage
+  var users = JSON.parse(localStorage.getItem('users')) || [];
 
-function filterResults(selectedPlatforms, selectedDurations, minPrice, maxPrice) {
-  const cards = document.querySelectorAll('.card');
-
-  cards.forEach(card => {
-    const platform = card.dataset.platform.toLowerCase();
-    const duration = card.dataset.duration.toLowerCase();
-    const price = parseFloat(card.dataset.price);
-
-    const platformMatch = selectedPlatforms.length === 0 || selectedPlatforms.includes(platform);
-    const durationMatch = selectedDurations.length === 0 || selectedDurations.includes(duration);
-    const priceMatch = price >= minPrice && price <= maxPrice;
-
-    if (platformMatch && durationMatch && priceMatch) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
+  // Kiểm tra xem có người dùng đã đăng nhập hay không
+  var loggedInUser = users.find(function (u) {
+    return u.loggedIn === true;
   });
-}
+
+  // Nếu có người dùng đã đăng nhập, hiển thị thông tin và nút đăng xuất
+  if (loggedInUser) {
+    $('#usernameDisplay').text('Chào ' + loggedInUser.username);
+    $('#loginBtn, #signupBtn').hide();
+    $('#logoutBtn').show();
+  }
+
+  // Xử lý sự kiện khi người dùng bấm nút đăng xuất
+  $('#logoutBtn').click(function () {
+    // Đánh dấu người dùng hiện tại đã đăng xuất
+    $('.nav-link.dropdown-toggle').html('<i class="bi bi-person-circle"></i><a> Tài khoản</a>');
+
+    loggedInUser.loggedIn = false;
+
+    // Lưu lại thông tin người dùng vào localStorage
+    localStorage.setItem('users', JSON.stringify(users));
+
+    // Hiển thị lại nút đăng nhập và đăng ký
+    $('#loginBtn, #signupBtn').show();
+    $('#logoutBtn').hide();
+
+    // Thực hiện các hành động khác sau khi đăng xuất
+    alert('Đăng xuất thành công');
+  });
+});
+$(document).ready(function () {
+  // Lấy danh sách các checkbox và input từ DOM
+  const platformCheckboxes = $('.platform-checkbox');
+  const durationCheckboxes = $('.duration-checkbox');
+  const priceRangeFrom = $('#priceRangeFrom');
+  const priceRangeTo = $('#priceRangeTo');
+
+  // Lắng nghe sự kiện khi người dùng nhấn nút Áp dụng
+  $('#applyFilterBtn').click(function () {
+    // Lọc dựa trên giá trị của checkbox và input
+    const selectedPlatforms = platformCheckboxes.filter(':checked').map(function () { return this.value; }).get();
+    const selectedDurations = durationCheckboxes.filter(':checked').map(function () { return this.value; }).get();
+    const minPrice = parseFloat(priceRangeFrom.val()) || 0;
+    const maxPrice = parseFloat(priceRangeTo.val()) || Number.POSITIVE_INFINITY;
+
+    // Hiển thị các kết quả phù hợp
+    filterResults(selectedPlatforms, selectedDurations, minPrice, maxPrice);
+  });
+});
+
+
