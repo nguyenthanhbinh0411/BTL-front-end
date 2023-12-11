@@ -1,9 +1,7 @@
 body{
   font-family: 'Poppins', sans-serif;
 }
-.text-shadow {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
+
 #myButton {
   position: relative;
   animation: moveButton 1s infinite alternate; 
