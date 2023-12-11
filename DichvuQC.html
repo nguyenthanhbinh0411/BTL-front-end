@@ -219,12 +219,19 @@
 <div class="container-fluid">
         <h2>Các gói dịch vụ phổ biến:</h2>
         <div class="row mt-3 ">
-          <div class="col-md-3 ">
+          <div class="col-md-3 col-sm-3">
             <div class="card h-100" data-platform="facebook" data-duration="1month" data-price="1000000">
               <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top img-fluid"
                 alt="Hollywood Sign on The Hill" />
               <div class="card-body">
-                <h4 class="card-title">Facebook</h4>
+                <div class=" d-flex">
+                  <div class="col-md-6">
+                      <h4 class="card-title">Facebook</h4>
+                  </div>
+                  <div class="col-md-6 text-end">
+                      <h4 id="HBT01">#HBT01</h4>
+                  </div>
+              </div>
                 <h5 class="card-text">
                   1.000.000 VND
                 </h5>
@@ -233,13 +240,21 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3 ">
+          <div class="col-md-3 col-sm-3">
             <div class="card h-100" data-platform="tiktok" data-duration="4months" data-price="5000000">
               <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top img-fluid"
                 alt="Hollywood Sign on The Hill" />
               <div class="card-body">
-                <h4 class="card-title">TikTok</h4>
+                  <div class=" d-flex">
+                    <div class="col-md-6">
+                        <h4 class="card-title">TikTok</h4>
+                    </div>
+                    <div class="col-md-6 text-end">
+                      <h4 id="HBT02">#HBT02</h4>
+                  </div>
+                </div>
                 <h5 class="card-text">
+
                   5.000.000 VND
                 </h5>
                 <p>Thời hạn: 4 tháng</p>
@@ -248,12 +263,19 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 col-sm-3">
             <div class="card h-100" data-platform="youtube" data-duration="2months" data-price="3000000">
               <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top img-fluid"
                 alt="Hollywood Sign on The Hill" />
               <div class="card-body">
-                <h4 class="card-title">Youtube</h4>
+                  <div class=" d-flex">
+                    <div class="col-md-6">
+                        <h4 class="card-title">Youtube</h4>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <h4 id="HBT03">#HBT03</h4>
+                    </div>
+                </div>
                 <h5 class="card-text">
                   3.000.000 VND
                 </h5>
@@ -262,12 +284,19 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 col-sm-3">
             <div class="card h-100" data-platform="google" data-duration="1year" data-price="10000000">
               <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top img-fluid"
                 alt="Hollywood Sign on The Hill" />
-              <div class="card-body">
-                <h4 class="card-title">Google</h4>
+                <div class="card-body">
+                  <div class=" d-flex">
+                    <div class="col-md-6">
+                        <h4 class="card-title">Google</h4>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <h4 id="HBT04">#HBT04</h4>
+                    </div>
+                </div>
                 <h5 class="card-text">
                   10.000.000 VND
                 </h5>
@@ -324,5 +353,25 @@
       alert('Đăng xuất thành công');
     });
   });
+  document.addEventListener('DOMContentLoaded', function () {
+  // Lấy danh sách các checkbox và input từ DOM
+  const platformCheckboxes = document.querySelectorAll('.platform-checkbox');
+  const durationCheckboxes = document.querySelectorAll('.duration-checkbox');
+  const priceRangeFrom = document.getElementById('priceRangeFrom');
+  const priceRangeTo = document.getElementById('priceRangeTo');
+
+  // Lắng nghe sự kiện khi người dùng nhấn nút Áp dụng
+  document.getElementById('applyFilterBtn').addEventListener('click', function () {
+    // Lọc dựa trên giá trị của checkbox và input
+    const selectedPlatforms = Array.from(platformCheckboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+    const selectedDurations = Array.from(durationCheckboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+    const minPrice = parseFloat(priceRangeFrom.value) || 0;
+    const maxPrice = parseFloat(priceRangeTo.value) || Number.POSITIVE_INFINITY;
+
+    // Hiển thị các kết quả phù hợp
+    filterResults(selectedPlatforms, selectedDurations, minPrice, maxPrice);
+  });
+});
+
 </script>
 </html>

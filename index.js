@@ -71,25 +71,6 @@ $(document).ready(function () {
     }
   }
 });
-document.addEventListener('DOMContentLoaded', function () {
-  // Lấy danh sách các checkbox và input từ DOM
-  const platformCheckboxes = document.querySelectorAll('.platform-checkbox');
-  const durationCheckboxes = document.querySelectorAll('.duration-checkbox');
-  const priceRangeFrom = document.getElementById('priceRangeFrom');
-  const priceRangeTo = document.getElementById('priceRangeTo');
-
-  // Lắng nghe sự kiện khi người dùng nhấn nút Áp dụng
-  document.getElementById('applyFilterBtn').addEventListener('click', function () {
-    // Lọc dựa trên giá trị của checkbox và input
-    const selectedPlatforms = Array.from(platformCheckboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
-    const selectedDurations = Array.from(durationCheckboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
-    const minPrice = parseFloat(priceRangeFrom.value) || 0;
-    const maxPrice = parseFloat(priceRangeTo.value) || Number.POSITIVE_INFINITY;
-
-    // Hiển thị các kết quả phù hợp
-    filterResults(selectedPlatforms, selectedDurations, minPrice, maxPrice);
-  });
-});
 
 function filterResults(selectedPlatforms, selectedDurations, minPrice, maxPrice) {
   const cards = document.querySelectorAll('.card');
