@@ -71,7 +71,6 @@ $(document).ready(function () {
     }
   }
 });
-
 $(document).ready(function () {
   // Lấy thông tin người dùng từ localStorage
   var users = JSON.parse(localStorage.getItem('users')) || [];
@@ -126,24 +125,4 @@ $(document).ready(function () {
   });
 });
 
-
-function filterResults(selectedPlatforms, selectedDurations, minPrice, maxPrice) {
-  const cards = document.querySelectorAll('.card');
-
-  cards.forEach(card => {
-    const platform = card.dataset.platform.toLowerCase();
-    const duration = card.dataset.duration.toLowerCase();
-    const price = parseFloat(card.dataset.price);
-
-    const platformMatch = selectedPlatforms.length === 0 || selectedPlatforms.includes(platform);
-    const durationMatch = selectedDurations.length === 0 || selectedDurations.includes(duration);
-    const priceMatch = price >= minPrice && price <= maxPrice;
-
-    if (platformMatch && durationMatch && priceMatch) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
 
