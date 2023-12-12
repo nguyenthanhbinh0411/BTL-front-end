@@ -105,24 +105,46 @@ $(document).ready(function () {
     alert('Đăng xuất thành công');
   });
 });
+ // Hàm filterResults để lọc và hiển thị kết quả
+ function filterResults(selectedPlatforms, selectedDurations, minPrice, maxPrice) {
+  // Lấy danh sách tất cả các gói dịch vụ
+  const allPackages = $('.card');
+
+  // Ẩn tất cả các gói dịch vụ
+  allPackages.hide();
+
+  // Lọc và hiển thị các gói dịch vụ phù hợp
+  allPackages.each(function () {
+    const platform = $(this).data('platform');
+    const duration = $(this).data('duration');
+    const price = $(this).data('price');
+
+    // Kiểm tra điều kiện lọc
+    const platformMatch = selectedPlatforms.length === 0 || selectedPlatforms.includes(platform);
+    const durationMatch = selectedDurations.length === 0 || selectedDurations.includes(duration);
+    const priceMatch = price >= minPrice && price <= maxPrice;
+
+    // Hiển thị gói dịch vụ nếu thỏa mãn tất cả điều kiện
+    if (platformMatch && durationMatch && priceMatch) {
+      $(this).show();
+    }
+  });
+}
+
+// Bạn có thể đặt đoạn mã trên vào phần $(document).ready() của bạn
 $(document).ready(function () {
-  // Lấy danh sách các checkbox và input từ DOM
   const platformCheckboxes = $('.platform-checkbox');
   const durationCheckboxes = $('.duration-checkbox');
   const priceRangeFrom = $('#priceRangeFrom');
   const priceRangeTo = $('#priceRangeTo');
 
-  // Lắng nghe sự kiện khi người dùng nhấn nút Áp dụng
   $('#applyFilterBtn').click(function () {
-    // Lọc dựa trên giá trị của checkbox và input
     const selectedPlatforms = platformCheckboxes.filter(':checked').map(function () { return this.value; }).get();
     const selectedDurations = durationCheckboxes.filter(':checked').map(function () { return this.value; }).get();
     const minPrice = parseFloat(priceRangeFrom.val()) || 0;
     const maxPrice = parseFloat(priceRangeTo.val()) || Number.POSITIVE_INFINITY;
 
-    // Hiển thị các kết quả phù hợp
     filterResults(selectedPlatforms, selectedDurations, minPrice, maxPrice);
   });
 });
-
 
