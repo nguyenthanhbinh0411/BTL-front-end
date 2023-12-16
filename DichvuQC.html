@@ -16,13 +16,14 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"
     integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap">
 </head>
 <style>
 </style>
+
 <body>
   <nav class="navbar navbar-expand-lg fixed-top bg-body">
     <div class="container-fluid">
@@ -52,12 +53,23 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#"><i class="bi bi-chat-dots"></i> Góp ý sản phẩm dịch vụ</a></li>
+              <li><a class="dropdown-item" href="feedback.html"><i class="bi bi-chat-dots"></i> Góp ý sản phẩm dịch
+                  vụ</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
               <li><a class="dropdown-item" href="#"><i class="bi bi-envelope"></i> Liên hệ</a></li>
             </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="changeUserInfoBtn">
+              <i class="bi bi-person"></i> Thay đổi thông tin
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cartModal" id="cartBtn">
+              <i class="bi bi-cart"></i> Giỏ hàng
+            </a>
           </li>
           <li class="nav-item me-1">
             <form class="d-flex" role="search">
@@ -81,6 +93,7 @@
                     class="bi bi-box-arrow-left"></i> Đăng xuất</a></li>
             </ul>
           </li>
+        </ul>
       </div>
   </nav>
   <div id="carouselExampleInterval" class="carousel slide mt-5 d-none d-md-block" data-bs-ride="carousel">
@@ -136,8 +149,7 @@
         <div class="col-md-2">
           <button class="btn text-nowrap" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
             aria-controls="offcanvasRight" data-bs-offset="10">Lọc <i class="bi bi-filter-right"></i></button>
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
-            aria-labelledby="offcanvasRightLabel">
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="offcanvasRightLabel">Bộ lọc tìm kiếm <i class="bi bi-funnel"></i></h5>
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -314,6 +326,65 @@
       </div>
     </div>
   </div>
+  <div class="modal-footer">
+  </div>
+  <div class="modal fade" id="userInfoModal" tabindex="-1" aria-labelledby="userInfoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="userInfoModalLabel">Thông tin người dùng</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="userInfoForm">
+            <div class="mb-3">
+              <label for="userName" class="form-label">Họ và tên:</label>
+              <input type="text" class="form-control" id="userName" required>
+            </div>
+            <div class="mb-3">
+              <label for="userAddress" class="form-label">Địa chỉ:</label>
+              <input type="text" class="form-control" id="userAddress" required>
+            </div>
+            <div class="mb-3">
+              <label for="userPhone" class="form-label">Số điện thoại:</label>
+              <input type="tel" class="form-control" id="userPhone" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="saveUserInfo()">Lưu thông tin</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal của giỏ hàng -->
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Thêm lớp modal-lg để tăng kích thước -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cartModalLabel">Giỏ hàng của bạn</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Thông tin người dùng:</strong></p>
+          <div id="userInfoInCart"></div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Mục</th>
+                <th scope="col">Thời hạn</th>
+                <th scope="col">Giá</th>
+                <th scope="col">Trạng thái</th>
+                <th scope="col">Hành động</th>
+              </tr>
+            </thead>
+            <tbody id="cartItems">
+              <!-- Thông tin giỏ hàng sẽ được thêm ở đây -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="bg-dark text-white text-center py-3 mt-5">
     <div class="container">
       <p>&copy; 2023 HBT ADS. All rights reserved.</p>
@@ -321,7 +392,144 @@
   </footer>
 
   <script src="index.js" defer></script>
+  <script>
+    $(document).ready(function () {
+      $(".btn-danger").click(function () {
+        // Kiểm tra xem đã nhập thông tin người dùng chưa
+        var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        if (!userInfo) {
+          // Nếu chưa nhập, hiển thị modal nhập thông tin người dùng
+          $("#userInfoModal").modal("show");
+        } else {
+          // Nếu đã nhập, thực hiện đặt hàng
+          // Lấy thông tin từ thẻ card
+          var platform = $(this).closest('.card').data('platform');
+          var duration = $(this).closest('.card').data('duration');
+          var price = $(this).closest('.card').data('price');
 
+          // Lấy thông tin trạng thái
+          var status = 'Chưa xử lý';
+
+          // Lưu thông tin đơn hàng vào Local Storage
+          var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+          cartItems.push({ platform: platform, duration: duration, price: price, status: status });
+          localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+          // Cập nhật lại số lượng mục trong giỏ hàng
+          updateCartBadge();
+        }
+      });
+
+      $("#changeUserInfoBtn").click(function () {
+        // Hiển thị modal thông tin người dùng
+        $("#userInfoModal").modal("show");
+      });
+
+      // Hiển thị số lượng mục trong giỏ hàng trên nút giỏ hàng
+      updateCartBadge();
+
+      // Đoạn mã JavaScript để xử lý sự kiện khi nhấn nút "Giỏ hàng"
+      $("#cartBtn").click(function () {
+        // Lấy thông tin từ Local Storage
+        var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        // Hiển thị thông tin người dùng trong modal giỏ hàng
+        var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        if (userInfo) {
+          $("#userInfoInCart").html(`
+        <p><strong>Họ và tên:</strong> ${userInfo.name}</p>
+        <p><strong>Địa chỉ:</strong> ${userInfo.address}</p>
+        <p><strong>Số điện thoại:</strong> ${userInfo.phone}</p>
+      `);
+        } else {
+          $("#userInfoInCart").html('<p>Thông tin người dùng chưa được cập nhật.</p>');
+        }
+
+        // Hiển thị thông tin trong modal
+        $("#cartItems").empty();
+        for (var i = 0; i < cartItems.length; i++) {
+          var item = cartItems[i];
+          $("#cartItems").append(`
+        <tr>
+          <td>${item.platform}</td>
+          <td>${item.duration}</td>
+          <td>${item.price} VND</td>
+          <td>${item.status}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" onclick="processPayment(${i})" ${item.status === 'Đã xử lý' ? '' : 'disabled'}>Thanh toán</button>
+            <button class="btn btn-danger btn-sm" onclick="removeItem(${i})">
+              Xóa
+            </button>
+            </td>
+        </tr>
+      `);
+        }
+
+        // Hiển thị modal
+        $("#cartModal").modal("show");
+      });
+
+      // Hàm xóa một mục khỏi giỏ hàng
+      window.removeItem = function (index) {
+        var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        cartItems.splice(index, 1);
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+        // Cập nhật lại số lượng mục trong giỏ hàng
+        updateCartBadge();
+
+        // Hiển thị lại thông tin giỏ hàng trong modal
+        $("#cartBtn").click();
+      };
+
+      // Hàm cập nhật số lượng mục trong giỏ hàng trên nút giỏ hàng
+      function updateCartBadge() {
+        var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        // Xóa thẻ badge hiện tại
+        $("#cartBtn .badge").remove();
+        // Thêm thẻ mới với số lượng mục trong giỏ hàng
+        $("#cartBtn").append(`<span class="badge bg-danger">${cartItems.length}</span>`);
+      }
+
+      // Hàm lưu thông tin người dùng
+      window.saveUserInfo = function () {
+        var userName = $("#userName").val();
+        var userAddress = $("#userAddress").val();
+        var userPhone = $("#userPhone").val();
+
+        // Lưu thông tin người dùng vào Local Storage
+        var userInfo = { name: userName, address: userAddress, phone: userPhone };
+        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+        // Đóng modal thông tin người dùng
+        $("#userInfoModal").modal("hide");
+
+        // Hiển thị lại số lượng mục trong giỏ hàng
+        updateCartBadge();
+      };
+
+      // Hàm xử lý thanh toán
+      window.processPayment = function (index) {
+        var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        var item = cartItems[index];
+
+        // Kiểm tra xem trạng thái có phải là "Đã xử lý" không
+        if (item.status === 'Đã xử lý') {
+          // Thực hiện thanh toán
+          // ...
+
+          // Cập nhật trạng thái sau khi thanh toán
+          item.status = 'Đã thanh toán';
+          localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+          // Hiển thị lại thông tin giỏ hàng trong modal
+          $("#cartBtn").click();
+        } else {
+          alert('Đơn hàng chưa được xử lý. Không thể thanh toán.');
+        }
+      };
+    });
+  </script>
 </body>
 
 </html>

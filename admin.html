@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Người Dùng</title>
+    <link rel="icon" href="https://png2.cleanpng.com/dy/45e6cd34d6b60489f2a8f4ed3ac6a02e/L0KzQYm3VsEyN5pth5H0aYP2gLBuTgJwgZJxjOs2ZoLodX7zjBdwNZh3eeJxaXOwdLb6ifdvNWZnSddtMHXkRIHqUfM1NmI9TaoDNUG6QYa5WMc1PmM2UKQBNUOxgLBu/kisspng-royalty-free-logo-graphic-design-5b1ed0ea40c1c4.1858851715287462182653.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap">
+</head>
+<style>
+    body{
+        padding-top: 56px;
+    }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top bg-body">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+            <img
+              src="https://png2.cleanpng.com/dy/45e6cd34d6b60489f2a8f4ed3ac6a02e/L0KzQYm3VsEyN5pth5H0aYP2gLBuTgJwgZJxjOs2ZoLodX7zjBdwNZh3eeJxaXOwdLb6ifdvNWZnSddtMHXkRIHqUfM1NmI9TaoDNUG6QYa5WMc1PmM2UKQBNUOxgLBu/kisspng-royalty-free-logo-graphic-design-5b1ed0ea40c1c4.1858851715287462182653.png"
+              alt="Logo" height="40" class="mr-2 me-2">
+            <span class="h4 align-middle">HBT Ads</span>
+          </a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Hỗ trợ khách hàng </i>
+                </a>
+                <ul class="dropdown-menu" id="dropdown-menu1">
+                  <li><a class="dropdown-item" href="#"><i class="bi bi-question-circle"></i> Câu hỏi thường gặp</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="feedback.html"><i class="bi bi-chat-dots"></i> Góp ý sản phẩm dịch vụ</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#"><i class="bi bi-envelope"></i> Liên hệ</a></li>
+                </ul>
+              </li>
+              <li class="nav-item me-1">
+                
+              </li>
+              <li class="nav-item dropdown me-5">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-person-circle"></i> <span id="usernameDisplay">Tài khoản</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="Login.html" id="loginBtn"><i class="bi bi-box-arrow-in-right"></i> Đăng
+                      Nhập</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="Register.html" id="signupBtn"><i class="bi bi-person-plus-fill"></i>
+                      Đăng Ký</a></li>
+                  <li><a href="#" class="dropdown-item" id="logoutBtn" style="display: none;"><i
+                        class="bi bi-box-arrow-left"></i> Đăng xuất</a></li>
+                </ul>
+              </li>
+          </div>
+      </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Quản lý Người Dùng</h2>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">STT</th>
+                                    <th scope="col">Tên người dùng</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Số điện thoại</th>
+                                    <th scope="col">Phân quyền</th>
+                                    <th scope="col">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="userList">
+                                <!-- Danh sách người dùng sẽ được hiển thị ở đây -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="index.html" class="btn btn-link">Quay lại trang chủ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="index.js" defer></script>
+    <script>
+           $(document).ready(function () {
+    // Lấy thông tin người dùng từ Local Storage
+    var users = JSON.parse(localStorage.getItem('users')) || [];
+
+    // Kiểm tra xem có người dùng đã đăng nhập hay không
+    var loggedInUser = users.find(function (u) {
+        return u.loggedIn === true;
+    });
+
+    if (loggedInUser && loggedInUser.role === 'admin') {
+        // Hiển thị danh sách người dùng
+        var userList = $('#userList');
+        $.each(users, function (index, user) {
+            userList.append('<tr>' +
+                '<td>' + (index + 1) + '</td>' +
+                '<td>' + user.username + '</td>' +
+                '<td>' + user.email + '</td>' +
+                '<td>' + user.phone + '</td>' +
+                '<td>' + user.role + '</td>' +
+                '<td><button class="btn btn-danger btn-sm deleteBtn" data-index="' + index + '">Xóa</button></td>' +
+                '</tr>');
+        });
+    } else {
+        // Nếu không có người dùng đăng nhập hoặc không phải admin, chuyển hướng về trang chủ
+        window.location.href = 'index.html';
+    }
+
+    // Sử dụng sự kiện click của jQuery để xử lý việc xóa người dùng
+    $(document).on('click', '.deleteBtn', function () {
+        var index = $(this).data('index');
+        deleteUser(index);
+    });
+
+    function deleteUser(index) {
+        // Xóa người dùng khỏi danh sách
+        var users = JSON.parse(localStorage.getItem('users')) || [];
+        users.splice(index, 1);
+        localStorage.setItem('users', JSON.stringify(users));
+
+        // Reload trang để cập nhật danh sách
+        location.reload();
+    }
+});
+
+    </script>
+</body>
+</html>
