@@ -46,7 +46,7 @@
                             <i class="bi bi-star-fill"></i> Quản lý tài khoản</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="changeUserInfoBtn">
+                        <a class="nav-link" href="Doanhthu.html" id="changeUserInfoBtn">
                             <i class="bi bi-person"></i> Quản lý doanh thu và số đơn
                         </a>
                     </li>
@@ -91,7 +91,7 @@
         </div>
     </div>
     </div>
-    <div class="container mt-5">
+    <div class="container">
         <div class="row mt-3">
             <h2>Quản lý doanh thu dịch vụ</h2>
 
@@ -161,35 +161,35 @@
                                     <td>GD001</td>
                                     <td>1,000,000 VND</td>
                                     <td>Đã hoàn thành</td>
-                                  </tr>
+                                </tr>
                                 <tr id="row2">
                                     <td>Người dùng B</td>
                                     <td>ID002</td>
                                     <td>GD002</td>
                                     <td>2,000,000 VND</td>
                                     <td>Chưa hoàn thành</td>
-                                  </tr>
-                                  <tr id="row3">
+                                </tr>
+                                <tr id="row3">
                                     <td>Người dùng C</td>
                                     <td>ID003</td>
                                     <td>GD003</td>
                                     <td>3,000,000 VND</td>
                                     <td>Đã hoàn thành</td>
-                                  </tr>
-                                  <tr id="row4">
+                                </tr>
+                                <tr id="row4">
                                     <td>Người dùng D</td>
                                     <td>ID004</td>
                                     <td>GD004</td>
                                     <td>4,000,000 VND</td>
                                     <td>Chưa hoàn thành</td>
-                                  </tr>
-                                  <tr id="row5">
+                                </tr>
+                                <tr id="row5">
                                     <td>Người dùng E</td>
                                     <td>ID005</td>
                                     <td>GD005</td>
                                     <td>5,000,000 VND</td>
                                     <td>Chưa hoàn thành</td>
-                                  </tr>
+                                </tr>
                                 <!-- Thêm các dòng khác tương tự -->
                             </tbody>
                         </table>
@@ -199,12 +199,6 @@
 
         </div>
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
     <footer class="bg-dark text-white text-center py-3 mt-5">
         <div class="container">
             <p>&copy; 2023 HBT ADS. All rights reserved.</p>
@@ -240,27 +234,27 @@
             }
         });
         $(document).ready(function () {
-    // Lắng nghe sự kiện thay đổi checkbox
-    $("#completedCheckbox, #pendingCheckbox").change(filterTable);
+            // Lắng nghe sự kiện thay đổi checkbox
+            $("#completedCheckbox, #pendingCheckbox").change(filterTable);
 
-    // Hàm lọc bảng
-    function filterTable() {
-      var completedChecked = $("#completedCheckbox").prop("checked");
-      var pendingChecked = $("#pendingCheckbox").prop("checked");
+            // Hàm lọc bảng
+            function filterTable() {
+                var completedChecked = $("#completedCheckbox").prop("checked");
+                var pendingChecked = $("#pendingCheckbox").prop("checked");
 
-      // Lặp qua từng dòng trong tbody
-      $(".table tbody tr").each(function () {
-        var status = $(this).find("td:eq(4)").text(); // Lấy giá trị tình trạng từ cột thứ 5
+                // Lặp qua từng dòng trong tbody
+                $(".table tbody tr").each(function () {
+                    var status = $(this).find("td:eq(4)").text(); // Lấy giá trị tình trạng từ cột thứ 5
 
-        // Kiểm tra xem dòng có phải là đã hoàn thành hay chưa hoàn thành và ẩn/hiện dựa trên checkbox
-        if ((completedChecked && status === "Đã hoàn thành") || (pendingChecked && status === "Chưa hoàn thành")) {
-          $(this).show(); // Hiện dòng
-        } else {
-          $(this).hide(); // Ẩn dòng
-        }
-      });
-    }
-  });
+                    // Kiểm tra xem dòng có phải là đã hoàn thành hay chưa hoàn thành và ẩn/hiện dựa trên checkbox
+                    if ((completedChecked && status === "Đã hoàn thành") || (pendingChecked && status === "Chưa hoàn thành")) {
+                        $(this).show(); // Hiện dòng
+                    } else {
+                        $(this).hide(); // Ẩn dòng
+                    }
+                });
+            }
+        });
     </script>
 </body>
 
