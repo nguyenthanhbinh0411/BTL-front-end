@@ -4,8 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tương tác và truy cập</title>
-    <link rel="icon" href="—Pngtree—letter h logo design vector_5102688.png" type="image/x-icon">
+    <title>HBT Ads</title>
+    <link rel="icon"
+        href="https://png2.cleanpng.com/dy/45e6cd34d6b60489f2a8f4ed3ac6a02e/L0KzQYm3VsEyN5pth5H0aYP2gLBuTgJwgZJxjOs2ZoLodX7zjBdwNZh3eeJxaXOwdLb6ifdvNWZnSddtMHXkRIHqUfM1NmI9TaoDNUG6QYa5WMc1PmM2UKQBNUOxgLBu/kisspng-royalty-free-logo-graphic-design-5b1ed0ea40c1c4.1858851715287462182653.png"
+        type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -18,11 +20,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap">
+    <style>
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+    </style>
 </head>
-<style>
-</style>
 
-<body class="d-flex flex-column min-vh-100">
+<body>
     <nav class="navbar navbar-expand-lg fixed-top bg-body">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
@@ -92,7 +101,6 @@
                 </ul>
               </div>
         </div>
-    
     </nav>
     <div class="container-fluid mt-5">
         <div class="row mt-3">
@@ -103,7 +111,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-black"><i
                                     class="bi bi-house-door"></i> Home </a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> Tương tác và lượt truy cập</li>
+                        <li class="breadcrumb-item active" aria-current="page">Thanh toán hóa đơn</li>
                     </ol>
                 </nav>
             </div>
@@ -112,35 +120,85 @@
             <hr>
         </div>
     </div>
-    <div class="container mt-2">
-        <h2>Các gói  thuê dịch vụ đang thuê:</h2>
+    <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="row g-0">
-                        <div class="col-md-3">
-                            <img src="https://cdnmedia.baotintuc.vn/Upload/lQuX6s340fSBU8AUyrDPxg/files/2021/10/facebook(1).jpg" alt="Service Package Image" class="img-fluid" style="width: 400px; height: 200px;">
-                        </div>
-                        <div class="col-md-9">
-                            <div class="card-body">
-                                <h5 class="card-title">ID Gói Dịch Vụ</h5>
-                                <p class="card-text">Mô tả hoặc thông tin khác về gói dịch vụ.</p>
-                                <a href="Tuongtac.html" class="btn btn-danger">Xem Lượt Truy Cập và Doanh Thu</a>
-                            </div>
-                        </div>
+                <h2>Nhận Hóa Đơn và Thanh Toán</h2>
+                <form id="receiveInvoiceForm">
+                    <!-- Các trường hiển thị thông tin hóa đơn -->
+                    <div class="mb-3">
+                        <label for="customerName" class="form-label">Tên Khách Hàng:</label>
+                        <input type="text" class="form-control" id="customerName" name="customerName" readonly>
                     </div>
-                </div>
+                    <div class="mb-3">
+                        <label for="transactionCode" class="form-label">Mã Giao Dịch:</label>
+                        <input type="text" class="form-control" id="transactionCode" name="transactionCode" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="servicePackageID" class="form-label">ID Gói Dịch Vụ:</label>
+                        <input type="text" class="form-control" id="servicePackageID" name="servicePackageID" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Giá Tiền:</label>
+                        <input type="number" class="form-control" id="price" name="price" readonly>
+                    </div>
+
+                    <!-- Nút thanh toán và phương thức thanh toán -->
+                    <div class="mb-3">
+                        <label for="paymentMethod" class="form-label">Chọn Phương Thức Thanh Toán:</label>
+                        <select class="form-select" id="paymentMethod" name="paymentMethod">
+                            <option value="cash">Tiền Mặt</option>
+                            <option value="creditCard">Thẻ Tín Dụng</option>
+                        </select>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-success" id="payButton">Thanh Toán</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    
-      <footer class="bg-dark text-white text-center py-3 mt-auto">
-        <div class="container">
-            <p>&copy; 2023 HBT ADS. All rights reserved.</p>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.min.js"></script>
+
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="index.js" defer></script>
     <script>
+ $(document).ready(function () {
+            // Nhận dữ liệu hóa đơn từ tham số URL
+            var queryString = window.location.search;
+            var urlParams = new URLSearchParams(queryString);
+
+            var invoiceData = {
+                customerName: urlParams.get('customerName'),
+                transactionCode: urlParams.get('transactionCode'),
+                servicePackageID: urlParams.get('servicePackageID'),
+                price: urlParams.get('price')
+            };
+
+            // Hiển thị thông tin hóa đơn trên form
+            $("#customerName").val(invoiceData.customerName);
+            $("#transactionCode").val(invoiceData.transactionCode);
+            $("#servicePackageID").val(invoiceData.servicePackageID);
+            $("#price").val(invoiceData.price);
+
+            $("#payButton").click(function () {
+                // Lấy dữ liệu từ form hóa đơn
+                var paymentMethod = $("#paymentMethod").val();
+
+                // Thực hiện xử lý thanh toán tại đây
+                // Ví dụ: Hiển thị thông báo thanh toán thành công
+                alert("Thanh toán thành công!\nThông tin hóa đơn:\nTên Khách Hàng: " + invoiceData.customerName +
+                    "\nMã Giao Dịch: " + invoiceData.transactionCode +
+                    "\nID Gói Dịch Vụ: " + invoiceData.servicePackageID +
+                    "\nGiá Tiền: " + invoiceData.price +
+                    "\nPhương Thức Thanh Toán: " + paymentMethod);
+
+                // Hiển thị thông báo đã thanh toán và chuyển hướng về trang chính
+                alert("Hóa đơn đã được thanh toán!");
+                window.location.href = "DichvuQC.html";
+            });
+        });
     </script>
 </body>
 
