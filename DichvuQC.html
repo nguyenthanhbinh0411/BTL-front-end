@@ -57,7 +57,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" id="changeUserInfoBtn">
+            <a class="nav-link" href="Card.html" id="changeUserInfoBtn">
               <i class="bi bi-person"></i> Tương tác và lượt truy cập
             </a>
           </li>
@@ -610,65 +610,117 @@
   </footer>
 
   <script src="index.js" defer></script>
-  <script>
+  <script>$(document).ready(function () {
+  const cancelOrderBtn = $('#cancelOrderBtn');
+  const btnClose = $('.btn-close');
+  const btnDangers = $('.btn-danger');
+  const confirmOrderBtn = $('#confirmOrderBtn');
+  const serviceCarousel = $('#serviceCarousel');
 
-   const $ = document.querySelector.bind(document);
-  const $$ = document.querySelectorAll.bind(document);
-  $('#cancelOrderBtn').onclick = function () {
-    $('.modal.fade').style.display = 'none'
-  };
-  $('.btn-close').onclick = function () {
-    $('.modal.fade').style.display = 'none'
-  };
-  $$('.btn-danger').forEach(function (button) {
-    button.addEventListener('click', function () {
-      const platform = button.closest('.card').getAttribute('data-platform');
-      const duration = button.closest('.card').getAttribute('data-duration');
-      const price = button.closest('.card').getAttribute('data-price');
-      currentOrder = { platform, duration, price };
-      loadDataToModal({ platform, duration, price });
-      $('.modal.fade').style.display = 'block'
-
+  // Kiểm tra sự tồn tại của các phần tử trước khi sử dụng
+  if (cancelOrderBtn.length > 0 && btnClose.length > 0 && btnDangers.length > 0 && confirmOrderBtn.length > 0 && serviceCarousel.length > 0) {
+    // Xử lý sự kiện cho nút hủy đơn hàng
+    cancelOrderBtn.on('click', function () {
+      $('.modal.fade').css('display', 'none');
     });
-  });
 
+    // Xử lý sự kiện cho nút đóng modal
+    btnClose.on('click', function () {
+      $('.modal.fade').css('display', 'none');
+    });
+
+    // Xử lý sự kiện cho các nút Danger
+    btnDangers.on('click', function () {
+      const card = $(this).closest('.card');
+
+      // Kiểm tra sự tồn tại của thuộc tính data trong phần tử .card
+      if (card.length > 0 && card.attr('data-platform') && card.attr('data-duration') && card.attr('data-price')) {
+        const platform = card.attr('data-platform');
+        const duration = card.attr('data-duration');
+        const price = card.attr('data-price');
+        const currentOrder = { platform, duration, price };
+
+        loadDataToModal(currentOrder);
+        $('.modal.fade').css('display', 'block');
+      } else {
+        console.error('Error: One or more data attributes not found in .card element.');
+      }
+    });
+
+    // Xử lý sự kiện khi nút xác nhận đơn hàng được click
+    confirmOrderBtn.on('click', handleConfirmOrderClick);
+
+    // Xử lý sự kiện khi carousel được chuyển đổi slide
+    serviceCarousel.on('slid.bs.carousel', function (e) {
+      var currentIndex = e.to;
+      const paginationPageItems = $('.pagination .page-item');
+
+      // Kiểm tra sự tồn tại của phần tử trong pagination trước khi sử dụng
+      if (paginationPageItems.length > currentIndex + 1) {
+        paginationPageItems.removeClass('active');
+        paginationPageItems.eq(currentIndex + 1).addClass('active');
+
+        if (currentIndex === 1 || currentIndex === 2) {
+          paginationPageItems.eq(1).removeClass('active');
+        }
+      } else {
+        console.error('Error: One or more elements not found in pagination.');
+      }
+    });
+  } else {
+    console.error('Error: One or more elements not found.');
+  }
+
+  // Hàm load dữ liệu vào modal
   function loadDataToModal(order) {
-    $('#confirmOrderModalBody').innerHTML = `
+    $('#confirmOrderModalBody').html(`
       <p>Bạn có chắc chắn muốn đặt hàng với các thông tin sau:</p>
       <p id="platform"><strong>Nền tảng:</strong> ${order.platform}</p>
       <p id="duration"><strong>Thời hạn:</strong> ${order.duration}</p>
       <p id="price"><strong>Giá tiền:</strong> ${order.price} VND</p>
-    `;
-    console.log()
+    `);
   }
+
+  // Hàm xử lý khi nút xác nhận đơn hàng được click
   function handleConfirmOrderClick() {
     let orders = JSON.parse(localStorage.getItem('orders')) || [];
-    const platform = $('#platform').innerText.split(':')[1].trim();
-    const duration = $('#duration').innerText.split(':')[1].trim();
-    const price = $('#price').innerText.split(':')[1].trim();
-    let order = { platform, duration, price, id : -1}
-    console.log(order)
-    if(orders.length === 0){
+    const platform = $('#platform').text().split(':')[1].trim();
+    const duration = $('#duration').text().split(':')[1].trim();
+    const price = $('#price').text().split(':')[1].trim();
+    let order = { platform, duration, price, id: -1 };
+
+    if (orders.length === 0) {
       order.id = 0;
-    }
-    else{
+    } else {
       order.id = parseInt(orders[orders.length - 1].id) + 1;
     }
+
     orders.push(order);
     localStorage.setItem('orders', JSON.stringify(orders));
     window.location.href = '/Nhapthongtin.html?id=' + order.id;
   }
-  $('#confirmOrderBtn').onclick = handleConfirmOrderClick;
-</script>
-   $('#serviceCarousel').on('slid.bs.carousel', function (e) {
+});
+
+$(document).ready(function () {
+  const serviceCarousel = $('#serviceCarousel');
+
+  serviceCarousel.on('slid.bs.carousel', function (e) {
     var currentIndex = e.to;
-    $('.pagination .page-item').removeClass('active');
-    
-    $('.pagination .page-item').eq(currentIndex + 1).addClass('active');
-    if (currentIndex === 1 || currentIndex === 2) {
-      $('.pagination .page-item').eq(1).removeClass('active');
+    const paginationPageItems = $('.pagination .page-item');
+
+    if (paginationPageItems.length > currentIndex + 1) {
+      paginationPageItems.removeClass('active');
+      paginationPageItems.eq(currentIndex + 1).addClass('active');
+
+      if (currentIndex === 1 || currentIndex === 2) {
+        paginationPageItems.eq(1).removeClass('active');
+      }
+    } else {
+      console.error('Error: One or more elements not found in pagination.');
     }
   });
+});
+
   </script>
 </body>
 
