@@ -22,7 +22,7 @@
 <style>
 </style>
 
-<body data-spy="scroll" data-target="#yourTableId " data-offset="20">
+<body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg fixed-top bg-body">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
@@ -90,95 +90,35 @@
             <hr>
         </div>
     </div>
-    <div class="container">
-        <div class="row mt-3">
-            <h2>Tương tác</h2>
-            <div class="col-md-4 mb-2">
-                <div class="card" style="background-color: #ff6384;">
-                    <div class="card-body">
-                        <h5 class="card-title">Tổng số lượt xem</h5>
-                        <hr>
-                        <p class="card-text">1.000 view</p>
+    <div class="container mt-2">
+        <h2>Các gọi thuê dịch vụ hiện có</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="row g-0">
+                        <div class="col-md-3">
+                            <img src="https://cdnmedia.baotintuc.vn/Upload/lQuX6s340fSBU8AUyrDPxg/files/2021/10/facebook(1).jpg" alt="Service Package Image" class="img-fluid" style="width: 400px; height: 200px;">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title">ID Gói Dịch Vụ</h5>
+                                <p class="card-text">Mô tả hoặc thông tin khác về gói dịch vụ.</p>
+                                <a href="Tuongtac.html" class="btn btn-danger text-end ">Xem Lượt Truy Cập và Doanh Thu</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-2">
-            <div class="card" style="background-color: #36a2eb;">
-                <div class="card-body">
-                    <h5 class="card-title">Tổng số người truy cập</h5>
-                    <hr>
-                    <p class="card-text">350 lượt</p>
-                </div>
-            </div>
-            </div>
-            <div class="col-md-4 mb-2">
-            </div>
         </div>
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-md 6">
-                    <h2>Biểu đồ số lượt xem qua các ngày</h2>
-                    <canvas id="viewChart" width="400" height="200"></canvas>
-                </div>
-                <div class="col-md-6">
-                    <h2>Biểu đồ tròn người truy cập</h2>
-                    <canvas id="accessChart" width="400" height="200"></canvas>
-                </div>
-            </div>
-        </div>
-
     </div>
-    <footer class="bg-dark text-white text-center py-3 mt-5">
+    
+      <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="container">
             <p>&copy; 2023 HBT ADS. All rights reserved.</p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.min.js"></script>
     <script>
-        var days = ['Ngày 1', 'Ngày 2', 'Ngày 3', 'Ngày 4', 'Ngày 5', 'Ngày 6', 'Ngày 7'];
-        var views = [100, 150, 120, 200, 180, 250, 300];
-
-        // Tạo biểu đồ đường
-        var ctx = document.getElementById('viewChart').getContext('2d');
-        var viewChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: days,
-                datasets: [{
-                    label: 'Số lượt xem',
-                    data: views,
-                    borderColor: 'blue',
-                    borderWidth: 1,
-                    fill: false
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-        var data = {
-            labels: ['Người truy cập', 'Người không truy cập'],
-            datasets: [{
-                data: [35, 65],
-                backgroundColor: ['#36a2eb', '#ff6384'],
-                hoverBackgroundColor: ['#36a2eb', '#ff6384']
-            }]
-        };
-
-        // Tạo biểu đồ tròn
-        var ctx = document.getElementById('accessChart').getContext('2d');
-        var accessChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: data,
-            options: {
-                responsive: true,
-                maintainAspectRatio: false
-            }
-        });
     </script>
 </body>
 
