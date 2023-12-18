@@ -277,55 +277,5 @@ function updateTable() {
  
 
  
-function handleProcessing(rowIndex) {
-  // Lấy thông tin giỏ hàng từ Local Storage
-  var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-  // Xử lý logic xử lý đơn hàng ở chỉ số hàng rowIndex
-  cartItems[rowIndex].status = "Đã xử lý";
 
-  // Lưu lại thông tin giỏ hàng sau khi xử lý
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-  // Gọi lại hàm để cập nhật bảng
-  updateCartTable();
-}
-
-function updateCartTable() {
-  console.log("Updating cart table...");
-  // Xóa toàn bộ nội dung trong bảng
-  $("#cartItems").empty();
-
-  // Lấy danh sách ý kiến đóng góp từ Local Storage
-  var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-  // Hiển thị danh sách ý kiến đóng góp
-  cartItems.forEach(function (item, index) {
-    var row = $("<tr></tr>");
-
-    // Thêm thông tin vào các ô của hàng
-    row.append("<td>" + item.platform + "</td>");
-    row.append("<td>" + item.duration + "</td>");
-    row.append("<td>" + item.price + " VND</td>");
-    row.append("<td>" + item.status + "</td>");
-
-    // Thêm nút "Xử lý" vào hàng bảng với khả năng xử lý (handleProcessing) được thêm vào
-    var processButton = $("<button></button>")
-      .addClass("btn btn-primary btn-sm")
-      .text("Xử lý")
-      .on("click", function () {
-        console.log("Handling processing for index: " + index);
-        handleProcessing(index);
-
-        // Sau khi xử lý, cập nhật lại bảng để xóa hàng vừa nhấn xử lý
-        updateCartTable();
-      });
-
-    row.append($("<td></td>").append(processButton));
-
-    // Thêm hàng vào bảng
-    $("#cartItems").append(row);
-  });
-
-  console.log("Cart table updated.");
-}

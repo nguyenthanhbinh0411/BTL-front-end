@@ -5,21 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>HBT Ads</title>
-    <link rel="icon"
-        href="—Pngtree—letter h logo design vector_5102688.png"
-        type="image/x-icon">
+    <link rel="icon" href="—Pngtree—letter h logo design vector_5102688.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap">
     <style>
         body {
             background-color: #f8f9fa;
@@ -32,7 +29,6 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
-            /* Tăng khoảng cách giữa navbar và container */
         }
 
         .table {
@@ -110,7 +106,27 @@
                     </li>
             </div>
     </nav>
+    <!-- Thêm thẻ div để hiển thị thông tin đơn hàng -->
     <div class="container mt-5">
+        <h2>Xác nhận đơn hàng</h2>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Nền tảng</th>
+              <th>Thời hạn</th>
+              <th>Giá tiền</th>
+              <th>Xem chi tiết</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody id="orderList">
+            <!-- Danh sách ý kiến đóng góp sẽ được hiển thị ở đây -->
+          </tbody>
+        </table>
+      </div>
+    
+      <div class="container mt-5">
         <h2>Hỗ trợ khách hàng</h2>
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
@@ -127,98 +143,165 @@
             </tbody>
         </table>
     </div>
-    <div class="container mt-5">
-        <h2>Đơn đặt hàng</h2>
-        <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Username</th>
-                    <th scope="col">Mục</th>
-                    <th scope="col">Thời hạn</th>
-                    <th scope="col">Giá</th>
-                    <th scope="col">Trạng thái</th>
-                    <th scope="col">Họ và Tên</th>
-                    <th scope="col">Số Điện Thoại</th>
-                    <th scope="col">Địa Chỉ Nhà</th>
-                    <th scope="col">Hành động</th>
-                </tr>
-            </thead>
-            <tbody id="cartItems">
-                <!-- Thông tin đơn đặt hàng sẽ được thêm ở đây -->
-            </tbody>
-        </table>
-    </div>
-
+      <!-- Modal -->
+    <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Thông tin chi tiết đơn hàng</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="submittedInfo">
+              <!-- Nội dung modal sẽ được thay đổi bởi JavaScript -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+          </div>
+        </div>
+      </div>
+     <!-- ... -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="index.js" defer></script>
     <script>
-        // Trong hàm sendDataToNhanvien
-        function sendDataToNhanvien() {
-            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+         // Lấy thông tin đơn hàng từ local storage
+     const orders = JSON.parse(localStorage.getItem('orders')) || [];
 
-            // Lấy thông tin người dùng từ Local Storage
-            var userInfo = JSON.parse(localStorage.getItem("userInfo")) || {};
+// Hiển thị danh sách đơn hàng
+const table = document.querySelector('.table tbody');
 
-            var cartItemsTable = document.getElementById("cartItems");
-            var index = 1;
+// Trước khi thêm các đơn hàng mới, xóa tất cả các dòng hiện tại trong bảng
+table.innerHTML = '';
 
-            // Duyệt qua danh sách các mục trong giỏ hàng và thêm vào bảng
-            cartItems.forEach(function (item) {
-                var row = cartItemsTable.insertRow(-1);
+orders.forEach(function (order, index) {
+  // Thay vì sử dụng table.insertRow(), tạo một dòng mới
+  const row = table.insertRow();
+  row.className = 'order-item';
 
-                // Thêm thông tin vào các ô của hàng
-                var usernameCell = row.insertCell(0);
-                usernameCell.textContent = userInfo.name; // Thêm tên người dùng vào ô username
+  const cellIndex = document.createElement('td');
+  const cellPlatform = document.createElement('td');
+  const cellDuration = document.createElement('td');
+  const cellPrice = document.createElement('td');
+  const cellViewDetail = document.createElement('td');
+  const cellActions = document.createElement('td');
 
-                var platformCell = row.insertCell(1);
-                platformCell.textContent = item.platform;
+  cellIndex.innerHTML = `<strong>${index + 1}</strong>`;
+  // Điều chỉnh dữ liệu hiển thị tùy thuộc vào cấu trúc đơn hàng
+  cellPlatform.innerHTML = order.platform;
+  cellDuration.innerHTML = order.duration;
+  cellPrice.innerHTML = `${order.price} VND`;
 
-                var durationCell = row.insertCell(2);
-                durationCell.textContent = item.duration;
+  // Thêm nút xem chi tiết
+  cellViewDetail.innerHTML = `<button class="btn btn-primary" onclick="showDetailModal(${index})">Xem thông tin</button>`;
 
-                var priceCell = row.insertCell(3);
-                priceCell.textContent = item.price;
+  // Thêm nút xóa
+  cellActions.innerHTML = `<button class="btn btn-primary btn-sm" onclick="deleteOrder(${index})">Duyệt</button>`;
 
-                var statusCell = row.insertCell(4);
-                statusCell.textContent = item.status;
+  // Thêm các ô vào dòng mới
+  row.appendChild(cellIndex);
+  row.appendChild(cellPlatform);
+  row.appendChild(cellDuration);
+  row.appendChild(cellPrice);
+  row.appendChild(cellViewDetail);
+  row.appendChild(cellActions);
 
-                var fullNameCell = row.insertCell(5);
-                fullNameCell.textContent = userInfo.name; // Thêm tên người dùng vào ô họ và tên
+  // Sau khi điều chỉnh dòng đơn hàng, thêm nó vào cuối bảng
+  table.appendChild(row);
+});
 
-                var phoneCell = row.insertCell(6);
-                phoneCell.textContent = userInfo.phone;
+// Hàm xem chi tiết và hiển thị modal
+function showDetailModal(index) {
+  const order = orders[index];
+  const modalBody = document.getElementById('submittedInfo');
 
-                var addressCell = row.insertCell(7);
-                addressCell.textContent = userInfo.address;
+  // Hiển thị thông tin trên modal
+  modalBody.innerHTML = `
+    <table class="table table-striped table-bordered mt-3">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="row">Tiêu Đề</th>
+          <td id="submittedTitle">${order.title}</td>
+        </tr>
+        <tr>
+          <th scope="row">Ghi Đường Dẫn Link</th>
+          <td id="submittedLink">${order.link}</td>
+        </tr>
+        <tr>
+          <th scope="row">Ảnh hoặc Video</th>
+          <td id="submittedImage"><img src="${order.imageUrl}" alt="Image" style="max-width: 100%;"></td>
+        </tr>
+      </thead>
+    </table>
+  `;
 
-                var processCell = row.insertCell(8);
-                var processButton = document.createElement("button");
-                processButton.classList.add("btn", "btn-success", "btn-sm");
-                processButton.textContent = "Xử lý";
-                processButton.addEventListener("click", function () {
-                    // Lấy chỉ số hàng của nút "Xử lý" được nhấn
-                    var rowIndex = $(this).closest("tr").index();
-                    handleProcessing(rowIndex);
+  // Hiển thị modal
+  const modal = new bootstrap.Modal(document.getElementById('detailModal'));
+  modal.show();
+}
 
-                    // Xóa hàng sau khi xử lý
-                    cartItems.splice(i, 1);
-                    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+// Hàm xóa đơn hàng
+function deleteOrder(index) {
+  const confirmation = confirm('Bạn có chắc chắn muốn duyệt đơn hàng này không?');
+  if (confirmation) {
+    orders.splice(index, 1);
+    localStorage.setItem('orders', JSON.stringify(orders));
+    // Sau khi xóa, cập nhật lại danh sách đơn hàng trong bảng
+    updateOrderList();
+  }
+}
 
-                    // Cập nhật lại bảng và số lượng mục trong giỏ hàng
-                    updateCartTable();
-                    updateCartBadge();
-                });
-                processCell.appendChild(processButton);
-            });
-        }
+// Hàm cập nhật lại danh sách đơn hàng trong bảng
+function updateOrderList() {
+  // Trước khi thêm các đơn hàng mới, xóa tất cả các dòng hiện tại trong bảng
+  table.innerHTML = '';
 
-        // Gọi hàm khi trang được tải
-        window.onload = function () {
-            sendDataToNhanvien();
-        };
+  orders.forEach(function (order, index) {
+    const row = table.insertRow();
+    row.className = 'order-item';
 
+    const cellIndex = document.createElement('td');
+    const cellPlatform = document.createElement('td');
+    const cellDuration = document.createElement('td');
+    const cellPrice = document.createElement('td');
+    const cellViewDetail = document.createElement('td');
+    const cellActions = document.createElement('td');
+
+    cellIndex.innerHTML = `<strong>${index + 1}</strong>`;
+    // Điều chỉnh dữ liệu hiển thị tùy thuộc vào cấu trúc đơn hàng
+    cellPlatform.innerHTML = order.platform;
+    cellDuration.innerHTML = order.duration;
+    cellPrice.innerHTML = `${order.price} VND`;
+
+    // Thêm nút xem chi tiết
+    cellViewDetail.innerHTML = `<button class="btn btn-primary" onclick="showDetailModal(${index})">Xem thông tin</button>`;
+
+    // Thêm nút xóa
+    cellActions.innerHTML = `<button class="btn btn-primary btn-sm" onclick="deleteOrder(${index})">Duyệt</button>`;
+
+    // Thêm các ô vào dòng mới
+    row.appendChild(cellIndex);
+    row.appendChild(cellPlatform);
+    row.appendChild(cellDuration);
+    row.appendChild(cellPrice);
+    row.appendChild(cellViewDetail);
+    row.appendChild(cellActions);
+
+    // Sau khi điều chỉnh dòng đơn hàng, thêm nó vào cuối bảng
+    table.appendChild(row);
+  });
+}
+
+// Xóa tham số URL sau khi đóng modal
+$('#detailModal').on('hidden.bs.modal', function (event) {
+  clearURLParameters();
+});
+
+// Xóa tham số URL
+function clearURLParameters() {
+  const newURL = window.location.origin + window.location.pathname;
+  window.history.replaceState({}, document.title, newURL);
+}
     </script>
-
 </body>
 
 </html>
