@@ -105,6 +105,7 @@
     <!-- Thêm thẻ div để hiển thị thông tin đơn hàng -->
     <div class="container mt-5">
         <h2>Xác nhận đơn hàng</h2>
+        <div class="table-responsive">
         <table class="table table-striped table-bordered">
           <thead>
             <tr>
@@ -121,11 +122,13 @@
             <!-- Danh sách ý kiến đóng góp sẽ được hiển thị ở đây -->
           </tbody>
         </table>
+        </div>
       </div>
 
 <!-- Thêm thẻ div để hiển thị thông tin đơn hàng đã duyệt -->
 <div class="container mt-5">
     <h2>Đơn hàng đã duyệt và chờ thanh toán</h2>
+    <div class="table-responsive">
     <table class="table table-striped table-bordered" id="approvedOrders">
         <thead>
             <tr>
@@ -142,9 +145,8 @@
             <!-- Danh sách đơn hàng đã duyệt sẽ được hiển thị ở đây -->
         </tbody>
     </table>
+    </div>
 </div>
-
-
 
       <!-- Modal -->
     <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -286,8 +288,7 @@ function deleteOrder(index) {
     // Lấy thông tin đơn hàng từ danh sách đã duyệt
     const order = orders.filter(order => order.status)[index];
 
-    // Chuyển hướng qua trang Hoadon.html
-    window.location.href = 'Hoadon.html';
+    window.location.href = 'Thanhtoan.html';
   }
 }
 
