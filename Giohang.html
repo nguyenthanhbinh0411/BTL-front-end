@@ -7,206 +7,205 @@
   <title>Doanh thu và hóa đơn</title>
   <link rel="icon" href="—Pngtree—letter h logo design vector_5102688.png" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"></script>
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            padding-top: 56px;
-        }
-
-        .container {
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-        }
-
-        .table {
-            margin-top: 20px;
-        }
-
-        .btn-danger {
-            background-color: #dc3545;
-            border-color: #dc3545;
-        }
-
-        .btn-danger:hover {
-            background-color: #c82333;
-            border-color: #bd2130;
-        }
-    </style>
+  <style>
+    .container {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+  </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top bg-body">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="—Pngtree—letter h logo design vector_5102688.png"
-                    alt="Logo" height="40" class="mr-2 me-2">
-                <span class="h4 align-middle">HBT Ads</span>
+  <nav class="navbar navbar-expand-lg fixed-top bg-body">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="—Pngtree—letter h logo design vector_5102688.png" alt="Logo" height="40" class="mr-2 me-2">
+        <span class="h4 align-middle">HBT Ads</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " href="DichvuQC.html" aria-expanded="false">
+              <i class="bi bi-star-fill"></i> Dịch vụ quảng cáo</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hỗ trợ khách hàng </i>
             </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link " href="#" aria-expanded="false">
-                            <i class="bi bi-star-fill"></i> Dịch vụ quảng cáo</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Hỗ trợ khách hàng </i>
-                        </a>
-                        <ul class="dropdown-menu" id="dropdown-menu1">
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-chat-dots"></i> Phê duyệt đơn hàng </a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="Nhanvien2.html"><i class="bi bi-envelope"></i> Liên hệ</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown me-5">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="bi bi-person-circle"></i> <span id="usernameDisplay">Tài khoản</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="Login.html" id="loginBtn"><i
-                                        class="bi bi-box-arrow-in-right"></i> Đăng
-                                    Nhập</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="Register.html" id="signupBtn"><i
-                                        class="bi bi-person-plus-fill"></i>
-                                    Đăng Ký</a></li>
-                            <li><a href="#" class="dropdown-item" id="logoutBtn" style="display: none;"><i
-                                        class="bi bi-box-arrow-left"></i> Đăng xuất</a></li>
-                        </ul>
-                    </li>
-            </div>
-    </nav>
-    <div class="container-fluid mt-5">
-      <div class="row mt-3">
-          <hr>
-          <div class="col-md-1 "></div>
-          <div class="col-md-9 mt-2">
-              <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-black"><i
-                                  class="bi bi-house-door"></i> Home </a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
-                  </ol>
-              </nav>
-          </div>
-          <div class="col-md-2 ">
-          </div>
-          <hr>
+            <ul class="dropdown-menu" id="dropdown-menu1">
+              <li><a class="dropdown-item" href="Cauhoithuonggap.html"><i class="bi bi-question-circle"></i> Câu hỏi
+                  thường gặp</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="feedback.html"><i class="bi bi-chat-dots"></i> Góp ý sản phẩm dịch
+                  vụ</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Card.html" id="changeUserInfoBtn">
+              <i class="bi bi-person"></i> Tương tác và lượt truy cập
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Giohang.html" data-bs-toggle="modal" data-bs-target="#cartModal" id="cartBtn">
+              <i class="bi bi-cart"></i> Giỏ hàng
+            </a>
+          </li>
+          <li class="nav-item me-1">
+            <form class="d-flex" role="search">
+              <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+          </li>
+          <li class="nav-item dropdown me-5">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i> <span id="usernameDisplay">Tài khoản</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="Login.html" id="loginBtn"><i class="bi bi-box-arrow-in-right"></i> Đăng
+                  Nhập</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="Register.html" id="signupBtn"><i class="bi bi-person-plus-fill"></i>
+                  Đăng Ký</a></li>
+              <li><a href="#" class="dropdown-item" id="logoutBtn" style="display: none;"><i
+                    class="bi bi-box-arrow-left"></i> Đăng xuất</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
+    </div>
+  </nav>
+  <div class="container-fluid mt-5">
+    <div class="row mt-3">
+      <hr>
+      <div class="col-md-1 "></div>
+      <div class="col-md-9 mt-2">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-black"><i
+                  class="bi bi-house-door"></i> Home </a></li>
+            <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="col-md-2 ">
+      </div>
+      <hr>
+    </div>
   </div>
   </div>
-    <!-- Thêm thẻ div để hiển thị thông tin đơn hàng -->
-    <div class="container mt-5">
-        <h2>Xác nhận đơn hàng</h2>
-        <table class="table table-striped table-bordered">
-          <thead>
-            <tr>
-              <th>STT</th>
-              <th>Nền tảng</th>
-              <th>Thời hạn</th>
-              <th>Giá tiền</th>
-              <th>Trạng thái</th>
-              <th>Xem chi tiết</th>
-              <th>Hành động</th>
-            </tr>
-          </thead>
-          <tbody id="orderList">
-            <!-- Danh sách ý kiến đóng góp sẽ được hiển thị ở đây -->
-          </tbody>
-        </table>
-      </div>
-
-<!-- Thêm thẻ div để hiển thị thông tin đơn hàng đã duyệt -->
-<div class="container mt-5">
-    <h2>Đơn hàng đã duyệt và chờ thanh toán</h2>
-    <table class="table table-striped table-bordered" id="approvedOrders">
+  <!-- Thêm thẻ div để hiển thị thông tin đơn hàng -->
+  <div class="container mt-5">
+    <h2>Xác nhận đơn hàng</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
         <thead>
-            <tr>
-                <th>STT</th>
-                <th>Nền tảng</th>
-                <th>Thời hạn</th>
-                <th>Giá tiền</th>
-                <th>Trạng thái</th>
-                <th>Xem chi tiết</th>
-                <th>Thanh toán</th>
-            </tr>
+          <tr>
+            <th>STT</th>
+            <th>Nền tảng</th>
+            <th>Thời hạn</th>
+            <th>Giá tiền</th>
+            <th>Trạng thái</th>
+            <th>Xem chi tiết</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="orderList">
+          <!-- Danh sách ý kiến đóng góp sẽ được hiển thị ở đây -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Thêm thẻ div để hiển thị thông tin đơn hàng đã duyệt -->
+  <div class="container mt-5">
+    <h2>Đơn hàng đã duyệt và chờ thanh toán</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered" id="approvedOrders">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Nền tảng</th>
+            <th>Thời hạn</th>
+            <th>Giá tiền</th>
+            <th>Trạng thái</th>
+            <th>Xem chi tiết</th>
+            <th>Thanh toán</th>
+          </tr>
         </thead>
         <tbody id="approvedOrderList">
-            <!-- Danh sách đơn hàng đã duyệt sẽ được hiển thị ở đây -->
+          <!-- Danh sách đơn hàng đã duyệt sẽ được hiển thị ở đây -->
         </tbody>
-    </table>
-</div>
+      </table>
+    </div>
+  </div>
 
-
-
-      <!-- Modal -->
-    <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Thông tin chi tiết đơn hàng</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="submittedInfo">
-              <!-- Nội dung modal sẽ được thay đổi bởi JavaScript -->
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-            </div>
-          </div>
+  <!-- Modal -->
+  <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Thông tin chi tiết đơn hàng</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="submittedInfo">
+          <!-- Nội dung modal sẽ được thay đổi bởi JavaScript -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
         </div>
       </div>
-     <!-- ... -->
+    </div>
+  </div>
+  <!-- ... -->
 
 
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="index.js" defer></script>
-    <script>
-         // Lấy thông tin đơn hàng từ local storage
-const orders = JSON.parse(localStorage.getItem('orders')) || [];
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="index.js" defer></script>
+  <script>
+    // Lấy thông tin đơn hàng từ local storage
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
 
-// Thêm trạng thái mặc định cho đơn hàng
-orders.forEach(order => {
-  order.status = order.status || false; // Mặc định là "Chưa xử lý"
-});
+    // Thêm trạng thái mặc định cho đơn hàng
+    orders.forEach(order => {
+      order.status = order.status || false; // Mặc định là "Chưa xử lý"
+    });
 
-// Hiển thị danh sách đơn hàng chưa xử lý
-const table = document.querySelector('.table tbody');
+    // Hiển thị danh sách đơn hàng chưa xử lý
+    const table = document.querySelector('.table tbody');
 
-// Trước khi thêm các đơn hàng mới, xóa tất cả các dòng hiện tại trong bảng
-table.innerHTML = '';
+    // Trước khi thêm các đơn hàng mới, xóa tất cả các dòng hiện tại trong bảng
+    table.innerHTML = '';
 
-orders.forEach(function (order, index) {
-    // Kiểm tra xem đơn hàng đã xử lý chưa
-    if (!order.status) {
+    orders.forEach(function (order, index) {
+      // Kiểm tra xem đơn hàng đã xử lý chưa
+      if (!order.status) {
         // Thay vì sử dụng table.insertRow(), tạo một dòng mới
         const row = table.insertRow();
         row.className = 'order-item';
@@ -244,15 +243,15 @@ orders.forEach(function (order, index) {
 
         // Sau khi điều chỉnh dòng đơn hàng, thêm nó vào cuối bảng
         table.appendChild(row);
-    }
-});
+      }
+    });
 
-// Hàm xem chi tiết và hiển thị modal
-function showDetailModal(index) {
-  const order = orders[index];
-  const modalBody = document.getElementById('submittedInfo');
+    // Hàm xem chi tiết và hiển thị modal
+    function showDetailModal(index) {
+      const order = orders[index];
+      const modalBody = document.getElementById('submittedInfo');
 
-  modalBody.innerHTML = `
+      modalBody.innerHTML = `
     <table class="table table-striped table-bordered mt-3">
       <thead class="thead-dark">
         <tr>
@@ -275,106 +274,112 @@ function showDetailModal(index) {
     </table>
   `;
 
-  // Hiển thị modal
-  const modal = new bootstrap.Modal(document.getElementById('detailModal'));
-  modal.show();
-}
+      // Hiển thị modal
+      const modal = new bootstrap.Modal(document.getElementById('detailModal'));
+      modal.show();
+    }
 
-// Hàm duyệt đơn hàng
-function approveOrder(index) {
-  const confirmation = confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');
-  if (confirmation) {
-    orders.splice(index, 1); // Xóa đơn hàng khỏi danh sách
-    localStorage.setItem('orders', JSON.stringify(orders));
-    // Sau khi xóa, cập nhật lại danh sách đơn hàng trong bảng
-    updateOrderList();
-    // Load lại trang sau khi xóa
-    location.reload();
-  }
-}
+    // Hàm duyệt đơn hàng
+    function approveOrder(index) {
+      const confirmation = confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');
+      if (confirmation) {
+        orders.splice(index, 1); // Xóa đơn hàng khỏi danh sách
+        localStorage.setItem('orders', JSON.stringify(orders));
+        // Sau khi xóa, cập nhật lại danh sách đơn hàng trong bảng
+        updateOrderList();
+        // Load lại trang sau khi xóa
+        location.reload();
+      }
+    }
 
-// Hàm xóa đơn hàng chờ thanh toán
-function deleteOrder(index) {
-  const confirmation = confirm('Bạn có chắc chắn muốn thanh toán đơn hàng này không?');
-  if (confirmation) {
-    orders.splice(index, 1); // Xóa đơn hàng khỏi danh sách
-    localStorage.setItem('orders', JSON.stringify(orders));
-    // Sau khi xóa, cập nhật lại danh sách đơn hàng trong bảng
-    updateOrderList();
-    // Load lại trang sau khi xóa
-    location.reload();
-    // Lấy thông tin đơn hàng từ danh sách đã duyệt
-    const order = orders.filter(order => order.status)[index];
+    // Hàm xóa đơn hàng chờ thanh toán
+    function deleteOrder(index) {
+      const confirmation = confirm('Bạn có chắc chắn muốn thanh toán đơn hàng này không?');
+      if (confirmation) {
+        orders.splice(index, 1); // Xóa đơn hàng khỏi danh sách
+        localStorage.setItem('orders', JSON.stringify(orders));
+        // Sau khi xóa, cập nhật lại danh sách đơn hàng trong bảng
+        updateOrderList();
+        // Load lại trang sau khi xóa
+        location.reload();
+        // Lấy thông tin đơn hàng từ danh sách đã duyệt
+        const order = orders.filter(order => order.status)[index];
 
+<<<<<<< HEAD
     // Chuyển hướng qua trang Hoadon.html
     window.location.href = 'Thanhtoan.html';
   }
 }
+=======
+        window.location.href = 'Thanhtoan.html';
+      }
+    }
+>>>>>>> 9e3f069cedb8f8244eedc8796496b14509b95a0f
 
-// Hàm cập nhật lại danh sách đơn hàng trong bảng
-function updateOrderList() {
-  // Trước khi thêm các đơn hàng mới, xóa tất cả các dòng hiện tại trong bảng
-  table.innerHTML = '';
+    // Hàm cập nhật lại danh sách đơn hàng trong bảng
+    function updateOrderList() {
+      // Trước khi thêm các đơn hàng mới, xóa tất cả các dòng hiện tại trong bảng
+      table.innerHTML = '';
 
-  orders.forEach(function (order, index) {
-    const row = table.insertRow();
-    row.className = 'order-item';
+      orders.forEach(function (order, index) {
+        const row = table.insertRow();
+        row.className = 'order-item';
 
-    const cellIndex = document.createElement('td');
-    const cellPlatform = document.createElement('td');
-    const cellDuration = document.createElement('td');
-    const cellPrice = document.createElement('td');
-    const cellStatus = document.createElement('td');
-    const cellViewDetail = document.createElement('td');
-    const cellActions = document.createElement('td');
+        const cellIndex = document.createElement('td');
+        const cellPlatform = document.createElement('td');
+        const cellDuration = document.createElement('td');
+        const cellPrice = document.createElement('td');
+        const cellStatus = document.createElement('td');
+        const cellViewDetail = document.createElement('td');
+        const cellActions = document.createElement('td');
 
-    cellIndex.innerHTML = `<strong>${index + 1}</strong>`;
-    // Điều chỉnh dữ liệu hiển thị tùy thuộc vào cấu trúc đơn hàng
-    cellPlatform.innerHTML = order.platform;
-    cellDuration.innerHTML = order.duration;
-    cellPrice.innerHTML = `${order.price} VND`;
-    cellStatus.innerHTML = order.status ? 'Đã xử lý' : 'Chưa xử lý';
+        cellIndex.innerHTML = `<strong>${index + 1}</strong>`;
+        // Điều chỉnh dữ liệu hiển thị tùy thuộc vào cấu trúc đơn hàng
+        cellPlatform.innerHTML = order.platform;
+        cellDuration.innerHTML = order.duration;
+        cellPrice.innerHTML = `${order.price} VND`;
+        cellStatus.innerHTML = order.status ? 'Đã xử lý' : 'Chưa xử lý';
 
-    // Thêm nút xem chi tiết
-    cellViewDetail.innerHTML = `<button class="btn btn-primary" onclick="showDetailModal(${index})">Xem thông tin</button>`;
+        // Thêm nút xem chi tiết
+        cellViewDetail.innerHTML = `<button class="btn btn-primary" onclick="showDetailModal(${index})">Xem thông tin</button>`;
 
-    // Thêm nút xóa
-    cellActions.innerHTML = `<button class="btn btn-primary btn-sm" onclick="approveOrder(${index})" ${order.status ? 'disabled' : ''}>Duyệt</button>`;
+        // Thêm nút xóa
+        cellActions.innerHTML = `<button class="btn btn-primary btn-sm" onclick="approveOrder(${index})" ${order.status ? 'disabled' : ''}>Duyệt</button>`;
 
-    // Thêm các ô vào dòng mới
-    row.appendChild(cellIndex);
-    row.appendChild(cellPlatform);
-    row.appendChild(cellDuration);
-    row.appendChild(cellPrice);
-    row.appendChild(cellStatus);
-    row.appendChild(cellViewDetail);
-    row.appendChild(cellActions);
+        // Thêm các ô vào dòng mới
+        row.appendChild(cellIndex);
+        row.appendChild(cellPlatform);
+        row.appendChild(cellDuration);
+        row.appendChild(cellPrice);
+        row.appendChild(cellStatus);
+        row.appendChild(cellViewDetail);
+        row.appendChild(cellActions);
 
-    // Sau khi điều chỉnh dòng đơn hàng, thêm nó vào cuối bảng
-    table.appendChild(row);
-  });
-}
+        // Sau khi điều chỉnh dòng đơn hàng, thêm nó vào cuối bảng
+        table.appendChild(row);
+      });
+    }
 
-// Xóa tham số URL sau khi đóng modal
-$('#detailModal').on('hidden.bs.modal', function (event) {
-  clearURLParameters();
-});
+    // Xóa tham số URL sau khi đóng modal
+    $('#detailModal').on('hidden.bs.modal', function (event) {
+      clearURLParameters();
+    });
 
-// Xóa tham số URL
-function clearURLParameters() {
-  const newURL = window.location.origin + window.location.pathname;
-  window.history.replaceState({}, document.title, newURL);
-}
+    // Xóa tham số URL
+    function clearURLParameters() {
+      const newURL = window.location.origin + window.location.pathname;
+      window.history.replaceState({}, document.title, newURL);
+    }
 
-// Hiển thị danh sách đơn hàng đã duyệt và chờ thanh toán
-const approvedTable = document.getElementById('approvedOrders').querySelector('tbody');
+    // Hiển thị danh sách đơn hàng đã duyệt và chờ thanh toán
+    const approvedTable = document.getElementById('approvedOrders').querySelector('tbody');
 
-// Trước khi thêm các đơn hàng mới, xóa tất cả các dòng hiện tại trong bảng đã duyệt
-approvedTable.innerHTML = '';
+    // Trước khi thêm các đơn hàng mới, xóa tất cả các dòng hiện tại trong bảng đã duyệt
+    approvedTable.innerHTML = '';
 
-orders.forEach(function (order, index) {
-    // Kiểm tra xem đơn hàng đã duyệt và chờ thanh toán chưa
-    if (order.status && !order.paymentStatus) {
+    orders.forEach(function (order, index) {
+      // Kiểm tra xem đơn hàng đã duyệt và chờ thanh toán chưa
+      if (order.status && !order.paymentStatus) {
         // Thay vì sử dụng table.insertRow(), tạo một dòng mới
         const row = approvedTable.insertRow();
         row.className = 'order-item';
@@ -395,7 +400,7 @@ orders.forEach(function (order, index) {
         // Hiển thị trạng thái
         cellStatus.innerHTML = 'Đã xử lý';
         // Hiển thị thanh toán
-        cellPayment.innerHTML =  `<button class="btn btn-primary" onclick="deleteOrder(${index})">Thanh toán</button>`;
+        cellPayment.innerHTML = `<button class="btn btn-primary" onclick="deleteOrder(${index})">Thanh toán</button>`;
 
         // Thêm nút xem chi tiết
         cellViewDetail.innerHTML = `<button class="btn btn-primary" onclick="showDetailModal(${index})">Xem thông tin</button>`;
@@ -406,14 +411,14 @@ orders.forEach(function (order, index) {
         row.appendChild(cellDuration);
         row.appendChild(cellPrice);
         row.appendChild(cellStatus);
-       
+
         row.appendChild(cellViewDetail);
         row.appendChild(cellPayment);
         // Sau khi điều chỉnh dòng đơn hàng, thêm nó vào cuối bảng đã duyệt
         approvedTable.appendChild(row);
-    }
-});
-    </script>
+      }
+    });
+  </script>
 </body>
 
 </html>

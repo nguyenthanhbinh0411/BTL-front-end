@@ -46,6 +46,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+<<<<<<< HEAD
                   <li class="nav-item">
                     <a class="nav-link " href="#" aria-expanded="false">
                       <i class="bi bi-star-fill"></i> Dịch vụ quảng cáo</a>
@@ -98,8 +99,67 @@
                             class="bi bi-box-arrow-left"></i> Đăng xuất</a></li>
                     </ul>
                   </li>
+=======
+                    <li class="nav-item">
+                        <a class="nav-link " href="#" aria-expanded="false">
+                            <i class="bi bi-star-fill"></i> Dịch vụ quảng cáo</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hỗ trợ khách hàng </i>
+                        </a>
+                        <ul class="dropdown-menu" id="dropdown-menu1">
+                            <li><a class="dropdown-item" href="Cauhoithuonggap.html"><i
+                                        class="bi bi-question-circle"></i> Câu hỏi thường gặp</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="feedback.html"><i class="bi bi-chat-dots"></i> Góp ý sản
+                                    phẩm dịch
+                                    vụ</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Card.html" id="changeUserInfoBtn">
+                            <i class="bi bi-person"></i> Tương tác và lượt truy cập
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cartModal" id="cartBtn">
+                            <i class="bi bi-cart"></i> Giỏ hàng
+                        </a>
+                    </li>
+                    <li class="nav-item me-1">
+                        <form class="d-flex" role="search">
+                            <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+                        </form>
+                    </li>
+                    <li class="nav-item dropdown me-5">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="bi bi-person-circle"></i> <span id="usernameDisplay">Tài khoản</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Login.html" id="loginBtn"><i
+                                        class="bi bi-box-arrow-in-right"></i> Đăng
+                                    Nhập</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="Register.html" id="signupBtn"><i
+                                        class="bi bi-person-plus-fill"></i>
+                                    Đăng Ký</a></li>
+                            <li><a href="#" class="dropdown-item" id="logoutBtn" style="display: none;"><i
+                                        class="bi bi-box-arrow-left"></i> Đăng xuất</a></li>
+                        </ul>
+                    </li>
+>>>>>>> 9e3f069cedb8f8244eedc8796496b14509b95a0f
                 </ul>
-              </div>
+            </div>
         </div>
     </nav>
     <div class="container-fluid mt-5">
@@ -164,6 +224,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="index.js" defer></script>
     <script>
+<<<<<<< HEAD
  $(document).ready(function () {
     // Nhận dữ liệu hóa đơn từ Local Storage
     var invoiceDataString = localStorage.getItem('invoiceData');
@@ -203,6 +264,46 @@
         // Có thể chuyển hướng về trang khác hoặc thực hiện các xử lý khác tùy thuộc vào yêu cầu của bạn.
     }
 });
+=======
+        $(document).ready(function () {
+    // Nhận dữ liệu hóa đơn từ tham số URL
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+
+    var invoiceData = {
+        customerName: urlParams.get('customerName'),
+        transactionCode: urlParams.get('transactionCode'),
+        servicePackageID: urlParams.get('servicePackageID'),
+        price: urlParams.get('price')
+    };
+
+    console.log("Received Invoice Data:", invoiceData);
+
+    // Hiển thị thông tin hóa đơn trên form
+    $("#customerName").val(invoiceData.customerName);
+    $("#transactionCode").val(invoiceData.transactionCode);
+    $("#servicePackageID").val(invoiceData.servicePackageID);
+    $("#price").val(invoiceData.price);
+
+    $("#payButton").click(function () {
+        // Lấy dữ liệu từ form hóa đơn
+        var paymentMethod = $("#paymentMethod").val();
+
+        // Thực hiện xử lý thanh toán tại đây
+        // Ví dụ: Hiển thị thông báo thanh toán thành công
+        alert("Thanh toán thành công!\nThông tin hóa đơn:\nTên Khách Hàng: " + invoiceData.customerName +
+            "\nMã Giao Dịch: " + invoiceData.transactionCode +
+            "\nID Gói Dịch Vụ: " + invoiceData.servicePackageID +
+            "\nGiá Tiền: " + invoiceData.price +
+            "\nPhương Thức Thanh Toán: " + paymentMethod);
+
+        // Hiển thị thông báo đã thanh toán và chuyển hướng về trang chính
+        alert("Hóa đơn đã được thanh toán!");
+        window.location.href = "DichvuQC.html";
+    });
+});
+
+>>>>>>> 9e3f069cedb8f8244eedc8796496b14509b95a0f
     </script>
 </body>
 

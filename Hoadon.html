@@ -30,7 +30,6 @@
         }
     </style>
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg fixed-top bg-body">
         <div class="container-fluid">
@@ -129,7 +128,11 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="index.js" defer></script>
     <script>
+<<<<<<< HEAD
        $(document).ready(function () {
+=======
+$(document).ready(function () {
+>>>>>>> 9e3f069cedb8f8244eedc8796496b14509b95a0f
     $("#sendInvoiceButton").click(function () {
         // Lấy dữ liệu từ form
         var customerName = $("#customerName").val();
@@ -137,6 +140,7 @@
         var servicePackageID = $("#servicePackageID").val();
         var price = $("#price").val();
 
+<<<<<<< HEAD
         // Tạo đối tượng để lưu trữ dữ liệu hóa đơn
         var invoiceData = {
             customerName: customerName,
@@ -153,6 +157,29 @@
         alert("Hóa đơn đã được gửi đi!");
     });
 });
+=======
+        // Kiểm tra xem các trường dữ liệu có giá trị không
+        if (customerName && transactionCode && servicePackageID && price) {
+            // Tạo URL cho trang nhận hóa đơn với tham số truyền qua
+            var receiveInvoiceUrl = "Nhanvien.html?" +
+                "customerName=" + encodeURIComponent(customerName) +
+                "&transactionCode=" + encodeURIComponent(transactionCode) +
+                "&servicePackageID=" + encodeURIComponent(servicePackageID) +
+                "&price=" + encodeURIComponent(price);
+
+            // Chuyển hướng đến trang nhận hóa đơn
+            window.location.href = receiveInvoiceUrl;
+
+            // Thông báo rằng hóa đơn đã được gửi đi (có thể tạm thời bỏ đi để kiểm tra)
+             alert("Hóa đơn đã được gửi đi!");
+        } else {
+            // Nếu có trường nào đó trống, thông báo cho người dùng
+            alert("Vui lòng điền đầy đủ thông tin trước khi gửi hóa đơn.");
+        }
+    });
+});
+
+>>>>>>> 9e3f069cedb8f8244eedc8796496b14509b95a0f
 
     </script>
 </body>
