@@ -63,7 +63,6 @@ $(document).ready(function () {
         if (user.role === 'admin') {
           // Chuyển hướng cho quản trị viên
           localStorage.setItem('users', JSON.stringify(users));
-          window.location.href = 'admin.html';
         } else if (user.role === 'employee') {
           // Chuyển hướng cho nhân viên
           localStorage.setItem('users', JSON.stringify(users));
