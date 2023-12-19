@@ -68,8 +68,8 @@
             </a>
           </li>
           <li class="nav-item me-1">
-            <form class="d-flex" role="search">
-              <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" role="search" id="searchForm">
+              <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="searchInput">
               <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
             </form>
           </li>
@@ -686,7 +686,26 @@ $(document).ready(function () {
     }
   });
 });
+ // Bắt sự kiện submit form tìm kiếm
+ $('#searchForm').submit(function (event) {
+    event.preventDefault(); // Ngăn chặn form submit mặc định
+  console.log('Form submitted');
+    // Lấy giá trị từ input tìm kiếm
+    const searchTerm = $('#searchInput').val().toLowerCase();
 
+    // Lặp qua tất cả các card và ẩn/hiện card dựa trên tiêu đề và data-platform
+    $('.card').each(function () {
+      const cardTitle = $(this).find('.card-title').text().toLowerCase();
+      const dataPlatform = $(this).data('platform').toLowerCase();
+
+      // Kiểm tra nếu tiêu đề hoặc data-platform chứa giá trị tìm kiếm
+      if (cardTitle.includes(searchTerm) || dataPlatform.includes(searchTerm)) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  });
   </script>
 </body>
 
