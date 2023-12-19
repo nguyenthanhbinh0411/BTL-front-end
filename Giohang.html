@@ -283,6 +283,11 @@ function deleteOrder(index) {
     updateOrderList();
     // Load lại trang sau khi xóa
     location.reload();
+    // Lấy thông tin đơn hàng từ danh sách đã duyệt
+    const order = orders.filter(order => order.status)[index];
+
+    // Chuyển hướng qua trang Hoadon.html
+    window.location.href = 'Hoadon.html';
   }
 }
 
