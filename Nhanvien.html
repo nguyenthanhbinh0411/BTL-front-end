@@ -215,7 +215,7 @@ orders.forEach(function (order, index) {
     // Điều chỉnh dữ liệu hiển thị tùy thuộc vào cấu trúc đơn hàng
     cellPlatform.innerHTML = order.platform;
     cellDuration.innerHTML = order.duration;
-    cellPrice.innerHTML = `${order.price} VND`;
+    cellPrice.innerHTML = `${order.price}`;
 
     // Hiển thị trạng thái
     cellStatus.innerHTML = order.status ? 'Đã xử lý' : 'Chưa xử lý';
@@ -305,7 +305,7 @@ function updateOrderList() {
         // Điều chỉnh dữ liệu hiển thị tùy thuộc vào cấu trúc đơn hàng
         cellPlatform.innerHTML = order.platform;
         cellDuration.innerHTML = order.duration;
-        cellPrice.innerHTML = `${order.price} VND`;
+        cellPrice.innerHTML = `${order.price}`;
         cellStatus.innerHTML = order.status ? 'Đã xử lý' : 'Chưa xử lý';
 
         // Thêm nút xem chi tiết

@@ -364,6 +364,24 @@
         </div>
       </div>
     </div>
+<!-- Modal Xác nhận Xóa -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Xác Nhận Xóa</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              Bạn có xác nhận xóa gói dịch vụ này chứ?!
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="cancelDeleteButton" data-dismiss="modal">Hủy</button>
+              <button type="button" class="btn btn-primary" id="confirmDeleteButton">Xác Nhận</button>
+          </div>
+      </div>
+  </div>
+</div>
 
     <script src="index.js" defer></script>
     <script>
@@ -402,13 +420,29 @@ function openServiceModal(platform) {
 }
 
 function deleteService(platform) {
-  // Xác định thẻ card cần xóa
-  const card = document.querySelector(`[data-platform="${platform}"]`);
+    // Xác định thẻ card cần xóa
+    const card = document.querySelector(`[data-platform="${platform}"]`);
 
-  // Xóa thẻ card nếu tồn tại
-  if (card) {
-    card.remove();
-  }
+    // Nếu thẻ card tồn tại, hiển thị modal xác nhận
+    if (card) {
+        // Hiển thị modal
+        $('#confirmDeleteModal').modal('show');
+
+        // Thiết lập sự kiện cho nút xác nhận trong modal
+        $('#confirmDeleteButton').on('click', function () {
+            // Xóa thẻ card
+            card.remove();
+
+            // Đóng modal
+            $('#confirmDeleteModal').modal('hide');
+        });
+
+        // Thiết lập sự kiện cho nút hủy bỏ trong modal
+        $('#cancelDeleteButton').on('click', function () {
+            // Đóng modal
+            $('#confirmDeleteModal').modal('hide');
+        });
+    }
 }
 
 function createNewCard(serviceName, servicePrice, serviceDuration, serviceIDCard, platform) {
