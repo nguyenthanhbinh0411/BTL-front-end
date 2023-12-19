@@ -357,6 +357,10 @@
                   <option value="10.000.000 VND">10.000.000 VND</option>
                 </select>
               </div>
+              <div class="mb-3">
+                <label for="serviceIDCard" class="form-label">ID Card</label>
+                <input type="text" class="form-control" id="serviceIDCard" placeholder="Nhập ID Card">
+              </div>
               <!-- Thêm các trường thông tin khác nếu cần -->
 
               <button type="button" class="btn btn-success" onclick="saveService()">Lưu</button>
@@ -387,6 +391,7 @@ function openServiceModal(platform) {
   const serviceNameInput = document.getElementById('serviceName');
   const servicePriceInput = document.getElementById('servicePrice');
   const serviceDurationInput = document.getElementById('serviceDuration');
+  const serviceIDCardInput = document.getElementById('serviceIDCard');
 
   // Đặt nút thành "Lưu" nếu có platform (đang sửa), "Thêm" nếu không có platform (đang thêm mới)
   const saveButton = document.querySelector('#serviceModal button.btn-success');
@@ -396,6 +401,7 @@ function openServiceModal(platform) {
     serviceNameInput.value = card.querySelector('.card-title').innerText;
     servicePriceInput.value = card.querySelector('.card-text').innerText;
     serviceDurationInput.value = card.querySelector('p:nth-child(3)').innerText;
+    serviceIDCardInput.value = card.querySelector('.service-details p').innerText.replace('ID Card: ', '');
     // Làm tương tự với các trường thông tin khác nếu có
   }
 }
@@ -410,7 +416,7 @@ function deleteService(platform) {
   }
 }
 
-function createNewCard(serviceName, servicePrice, serviceDuration, platform) {
+function createNewCard(serviceName, servicePrice, serviceDuration, serviceIDCard, platform) {
   // Tạo thẻ card mới
   const card = document.createElement('div');
   card.classList = `col-md-3 col-sm-3`;
@@ -419,24 +425,18 @@ function createNewCard(serviceName, servicePrice, serviceDuration, platform) {
       <img src="top10quocgiaconhieunguoidungfacebooknhat2023gomnhungnuocnao-050623-115256-800-resize.jpg" class="card-img-top img-fluid" alt="Hollywood Sign on The Hill" />
       <div class="card-body">
         <div class="d-flex">
-                <div class="col-md-6">
-                  <h4 class="card-title">${serviceName}</h4>
-                </div>
-                <div class="col-md-6 text-end">
-                  <h4>#HBT01</h4>
-                </div>
-              </div>
-        
+          <div class="col-md-6">
+            <h4 class="card-title">${serviceName}</h4>
+          </div>
+          <div class="col-md-6 text-end">
+            <h4>${serviceIDCard}</h4>
+          </div>
+        </div>
         <h5 class="card-text">${servicePrice}</h5>
         <p>Thời hạn: ${serviceDuration}</p>
         <div class="text-end">
           <button type="button" class="btn btn-danger" onclick="deleteService('${platform}')">Xóa</button>
           <button type="button" class="btn btn-primary" onclick="openServiceModal('${platform}')">Sửa</button>
-          <button type="button" class="btn btn-success" onclick="openServiceModal()">Thêm</button>
-        </div>
-        <div class="service-details">
-          <p>Thông tin chi tiết dịch vụ ${serviceName}</p>
-          <!-- Thêm thông tin chi tiết khác nếu cần -->
         </div>
       </div>
     </div>
@@ -446,31 +446,37 @@ function createNewCard(serviceName, servicePrice, serviceDuration, platform) {
   document.querySelector('.row.service-container').appendChild(card);
 }
 
-function updateExistingCard(serviceName, servicePrice, serviceDuration, platform) {
+function updateExistingCard(serviceName, servicePrice, serviceDuration, serviceIDCard, platform) {
   // Cập nhật thẻ card cũ
   const card = document.querySelector(`[data-platform="${platform}"]`);
 
   if (card) {
-    card.setAttribute('data-duration', serviceDuration);
-    card.setAttribute('data-price', servicePrice);
-    card.querySelector('.card-title').innerText = serviceName;
-    card.querySelector('.card-text').innerText = servicePrice;
-    card.querySelector('p:nth-child(3)').innerText = `Thời hạn: ${serviceDuration}`;
+    const cardTitle = card.querySelector('.card-title');
+    const cardText = card.querySelector('.card-text');
+    const durationElement = card.querySelector('p:nth-child(3)');
+    const serviceDetails = card.querySelector('.service-details p');
+
+    if (cardTitle) cardTitle.innerText = serviceName;
+    if (cardText) cardText.innerText = servicePrice;
+    if (durationElement) durationElement.innerText = `Thời hạn: ${serviceDuration}`;
+    if (serviceDetails) serviceDetails.innerText = `ID Card: ${serviceIDCard}`;
     // Cập nhật thông tin chi tiết khác nếu có
   }
 }
+
 
 function saveService() {
   // Lấy giá trị từ các trường input
   const serviceName = document.getElementById('serviceName').value;
   const servicePrice = document.getElementById('servicePrice').value;
   const serviceDuration = document.getElementById('serviceDuration').value;
+  const serviceIDCard = document.getElementById('serviceIDCard').value;
 
   // Lưu giá trị như trong đoạn mã hiện tại
   if (editingPlatform) {
-    updateExistingCard(serviceName, servicePrice, serviceDuration, editingPlatform);
+    updateExistingCard(serviceName, servicePrice, serviceDuration, serviceIDCard, editingPlatform);
   } else {
-    createNewCard(serviceName, servicePrice, serviceDuration, editingPlatform);
+    createNewCard(serviceName, servicePrice, serviceDuration, serviceIDCard, editingPlatform);
   }
 
   // Đặt nút thành "Thêm"
@@ -507,7 +513,6 @@ function applyFilters() {
     }
   });
 }
-
     </script>
 </body>
 
