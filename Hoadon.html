@@ -130,26 +130,29 @@
     <script src="index.js" defer></script>
     <script>
        $(document).ready(function () {
-            $("#sendInvoiceButton").click(function () {
-                // Lấy dữ liệu từ form
-                var customerName = $("#customerName").val();
-                var transactionCode = $("#transactionCode").val();
-                var servicePackageID = $("#servicePackageID").val();
-                var price = $("#price").val();
+    $("#sendInvoiceButton").click(function () {
+        // Lấy dữ liệu từ form
+        var customerName = $("#customerName").val();
+        var transactionCode = $("#transactionCode").val();
+        var servicePackageID = $("#servicePackageID").val();
+        var price = $("#price").val();
 
-                // Tạo URL cho trang nhận hóa đơn với tham số truyền qua
-                var receiveInvoiceUrl = "Thanhtoan.html?" +
-                    "customerName=" + encodeURIComponent(customerName) +
-                    "&transactionCode=" + encodeURIComponent(transactionCode) +
-                    "&servicePackageID=" + encodeURIComponent(servicePackageID) +
-                    "&price=" + encodeURIComponent(price);
+        // Tạo đối tượng để lưu trữ dữ liệu hóa đơn
+        var invoiceData = {
+            customerName: customerName,
+            transactionCode: transactionCode,
+            servicePackageID: servicePackageID,
+            price: price
+        };
 
-                // Chuyển hướng đến trang nhận hóa đơn
-                window.location.href = receiveInvoiceUrl;
-                alert("Hóa đơn đã được gửi đi!");
+        // Lưu dữ liệu vào Local Storage
+        localStorage.setItem('invoiceData', JSON.stringify(invoiceData));
 
-            });
-        });
+        // Chuyển hướng đến trang nhận hóa đơn
+        window.location.href = "Nhanvien.html";
+        alert("Hóa đơn đã được gửi đi!");
+    });
+});
 
     </script>
 </body>

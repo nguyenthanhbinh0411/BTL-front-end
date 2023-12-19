@@ -72,7 +72,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cartModal" id="cartBtn">
+                    <a class="nav-link" href="Giohang.html" data-bs-toggle="modal" data-bs-target="#cartModal" id="cartBtn">
                       <i class="bi bi-cart"></i> Giỏ hàng
                     </a>
                   </li>
@@ -165,40 +165,44 @@
     <script src="index.js" defer></script>
     <script>
  $(document).ready(function () {
-            // Nhận dữ liệu hóa đơn từ tham số URL
-            var queryString = window.location.search;
-            var urlParams = new URLSearchParams(queryString);
+    // Nhận dữ liệu hóa đơn từ Local Storage
+    var invoiceDataString = localStorage.getItem('invoiceData');
+    
+    if (invoiceDataString) {
+        // Chuyển chuỗi JSON thành đối tượng JavaScript
+        var invoiceData = JSON.parse(invoiceDataString);
 
-            var invoiceData = {
-                customerName: urlParams.get('customerName'),
-                transactionCode: urlParams.get('transactionCode'),
-                servicePackageID: urlParams.get('servicePackageID'),
-                price: urlParams.get('price')
-            };
+        // Hiển thị thông tin hóa đơn trên form
+        $("#customerName").val(invoiceData.customerName);
+        $("#transactionCode").val(invoiceData.transactionCode);
+        $("#servicePackageID").val(invoiceData.servicePackageID);
+        $("#price").val(invoiceData.price);
 
-            // Hiển thị thông tin hóa đơn trên form
-            $("#customerName").val(invoiceData.customerName);
-            $("#transactionCode").val(invoiceData.transactionCode);
-            $("#servicePackageID").val(invoiceData.servicePackageID);
-            $("#price").val(invoiceData.price);
+        $("#payButton").click(function () {
+            // Lấy dữ liệu từ form hóa đơn
+            var paymentMethod = $("#paymentMethod").val();
 
-            $("#payButton").click(function () {
-                // Lấy dữ liệu từ form hóa đơn
-                var paymentMethod = $("#paymentMethod").val();
+            // Thực hiện xử lý thanh toán tại đây
+            // Ví dụ: Hiển thị thông báo thanh toán thành công
+            alert("Thanh toán thành công!\nThông tin hóa đơn:\nTên Khách Hàng: " + invoiceData.customerName +
+                "\nMã Giao Dịch: " + invoiceData.transactionCode +
+                "\nID Gói Dịch Vụ: " + invoiceData.servicePackageID +
+                "\nGiá Tiền: " + invoiceData.price +
+                "\nPhương Thức Thanh Toán: " + paymentMethod);
 
-                // Thực hiện xử lý thanh toán tại đây
-                // Ví dụ: Hiển thị thông báo thanh toán thành công
-                alert("Thanh toán thành công!\nThông tin hóa đơn:\nTên Khách Hàng: " + invoiceData.customerName +
-                    "\nMã Giao Dịch: " + invoiceData.transactionCode +
-                    "\nID Gói Dịch Vụ: " + invoiceData.servicePackageID +
-                    "\nGiá Tiền: " + invoiceData.price +
-                    "\nPhương Thức Thanh Toán: " + paymentMethod);
+            // Xóa dữ liệu hóa đơn khỏi Local Storage sau khi thanh toán
+            localStorage.removeItem('invoiceData');
 
-                // Hiển thị thông báo đã thanh toán và chuyển hướng về trang chính
-                alert("Hóa đơn đã được thanh toán!");
-                window.location.href = "DichvuQC.html";
-            });
+            // Hiển thị thông báo đã thanh toán và chuyển hướng về trang chính
+            alert("Hóa đơn đã được thanh toán!");
+            window.location.href = "Giohang.html";
         });
+    } else {
+        // Trường hợp không có dữ liệu hóa đơn trong Local Storage
+        alert("Không tìm thấy dữ liệu hóa đơn trong Local Storage.");
+        // Có thể chuyển hướng về trang khác hoặc thực hiện các xử lý khác tùy thuộc vào yêu cầu của bạn.
+    }
+});
     </script>
 </body>
 
