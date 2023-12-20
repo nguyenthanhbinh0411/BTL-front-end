@@ -51,7 +51,7 @@
                     </li>
                     
                     <li class="nav-item dropdown me-5">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <i class="bi bi-person-circle"></i> <span id="usernameDisplay">Tài khoản</span>
                         </a>
@@ -111,7 +111,7 @@
                       </tr>
                     </thead>
                     <tbody id="userList">
-                      <!-- Danh sách người dùng sẽ được hiển thị ở đây -->
+<!-- Danh sách người dùng sẽ được hiển thị ở đây -->
                     </tbody>
                   </table>
                 </div>
@@ -123,9 +123,29 @@
           </div>
         </div>
       </div>      
+      <!-- Modal Xác nhận Xóa -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xác Nhận Xóa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+            <div class="modal-body">
+                Bạn có chắc chắn muốn xóa người dùng này không?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteUserBtn">Xác Nhận Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
+
     <script src="index.js" defer></script>
     <script>
-           $(document).ready(function () {
+$(document).ready(function () {
     // Lấy thông tin người dùng từ Local Storage
     var users = JSON.parse(localStorage.getItem('users')) || [];
 
@@ -147,27 +167,43 @@
                 '<td><button class="btn btn-danger btn-sm deleteBtn" data-index="' + index + '">Xóa</button></td>' +
                 '</tr>');
         });
-    } else {
-        // Nếu không có người dùng đăng nhập hoặc không phải admin, chuyển hướng về trang chủ
-        window.location.href = 'index.html';
     }
 
     // Sử dụng sự kiện click của jQuery để xử lý việc xóa người dùng
     $(document).on('click', '.deleteBtn', function () {
         var index = $(this).data('index');
-        deleteUser(index);
+        // Gọi hàm xác nhận xóa người dùng
+        confirmDeleteUser(index);
     });
 
-    function deleteUser(index) {
-        // Xóa người dùng khỏi danh sách
-        var users = JSON.parse(localStorage.getItem('users')) || [];
-        users.splice(index, 1);
-        localStorage.setItem('users', JSON.stringify(users));
-
-        // Reload trang để cập nhật danh sách
-        location.reload();
-    }
+    // Thêm sự kiện click cho nút "Xóa" trong modal xác nhận
+    $('#confirmDeleteUserBtn').click(function () {
+        // Lấy index từ thuộc tính data-index
+        var index = $(this).data('index');
+        // Gọi hàm xóa người dùng với index tương ứng
+        deleteUser(index);
+        // Đóng modal
+        $('#confirmDeleteModal').modal('hide');
+    });
 });
+
+// Hàm xác nhận xóa người dùng và hiển thị modal
+function confirmDeleteUser(index) {
+    // Lưu index vào thuộc tính data-index của nút "Xác Nhận Xóa"
+    $('#confirmDeleteUserBtn').data('index', index);
+    // Hiển thị modal
+    $('#confirmDeleteModal').modal('show');
+}
+
+// Hàm xóa người dùng từ danh sách và reload trang
+function deleteUser(index) {
+    // Xóa người dùng khỏi danh sách
+    var users = JSON.parse(localStorage.getItem('users')) || [];
+    users.splice(index, 1);
+    localStorage.setItem('users', JSON.stringify(users));
+    // Reload trang để cập nhật danh sách
+    location.reload();
+}
 
     </script>
 </body>

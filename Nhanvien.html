@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Doanh thu và hóa đơn</title>
+    <link rel="icon" href="—Pngtree—letter h logo design vector_5102688.png" type="image/x-icon">
     <title>HBT Ads</title>
     <link rel="icon"
         href="https://png2.cleanpng.com/dy/45e6cd34d6b60489f2a8f4ed3ac6a02e/L0KzQYm3VsEyN5pth5H0aYP2gLBuTgJwgZJxjOs2ZoLodX7zjBdwNZh3eeJxaXOwdLb6ifdvNWZnSddtMHXkRIHqUfM1NmI9TaoDNUG6QYa5WMc1PmM2UKQBNUOxgLBu/kisspng-royalty-free-logo-graphic-design-5b1ed0ea40c1c4.1858851715287462182653.png"
@@ -97,6 +99,25 @@
                     </li>
             </div>
     </nav>
+    <div class="container-fluid mt-5">
+        <div class="row mt-3">
+            <hr>
+            <div class="col-md-1 "></div>
+            <div class="col-md-9 mt-2">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-black"><i
+                                    class="bi bi-house-door"></i> Home </a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Xác nhận đơn hàng và xuất hóa đơn</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-2 ">
+            </div>
+            <hr>
+        </div>
+    </div>
+    </div>
     <!-- Thêm thẻ div để hiển thị thông tin đơn hàng -->
     <div class="container mt-5">
         <h2>Xác nhận đơn hàng</h2>
@@ -194,7 +215,7 @@ orders.forEach(function (order, index) {
     // Điều chỉnh dữ liệu hiển thị tùy thuộc vào cấu trúc đơn hàng
     cellPlatform.innerHTML = order.platform;
     cellDuration.innerHTML = order.duration;
-    cellPrice.innerHTML = `${order.price} VND`;
+    cellPrice.innerHTML = `${order.price}`;
 
     // Hiển thị trạng thái
     cellStatus.innerHTML = order.status ? 'Đã xử lý' : 'Chưa xử lý';
@@ -284,7 +305,7 @@ function updateOrderList() {
         // Điều chỉnh dữ liệu hiển thị tùy thuộc vào cấu trúc đơn hàng
         cellPlatform.innerHTML = order.platform;
         cellDuration.innerHTML = order.duration;
-        cellPrice.innerHTML = `${order.price} VND`;
+        cellPrice.innerHTML = `${order.price}`;
         cellStatus.innerHTML = order.status ? 'Đã xử lý' : 'Chưa xử lý';
 
         // Thêm nút xem chi tiết

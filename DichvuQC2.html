@@ -20,10 +20,17 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap">
 </head>
 <style>
-     .service-details {
-      display: none;
-      margin-top: 10px;
-    }
+  .service-details {
+    display: none;
+    margin-top: 10px;
+  }
+
+  .fixed-add-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
 </style>
 
 <body>
@@ -59,6 +66,12 @@
                   <a class="nav-link" href="Doanhthu.html" id="changeUserInfoBtn">
                       <i class="bi bi-person"></i> Quản lý doanh thu và số đơn
                   </a>
+              </li>
+              <li class="nav-item me-1">
+                <form class="d-flex" role="search" id="searchForm">
+                  <input class="form-control" type="search" placeholder="Nền tảng quảng cáo" aria-label="Search" id="searchInput">
+                  <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+                </form>
               </li>
           <li class="nav-item dropdown me-5">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -96,8 +109,7 @@
         <div class="col-md-2">
           <button class="btn text-nowrap" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
             aria-controls="offcanvasRight" data-bs-offset="10">Lọc <i class="bi bi-filter-right"></i></button>
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
-            aria-labelledby="offcanvasRightLabel">
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="offcanvasRightLabel">Bộ lọc tìm kiếm <i class="bi bi-funnel"></i></h5>
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -195,8 +207,8 @@
         <!-- Card for Facebook -->
         <div class="col-md-3 col-sm-3">
           <div class="card h-100" data-platform="facebook" data-duration="1month" data-price="1000000">
-            <img src="top10quocgiaconhieunguoidungfacebooknhat2023gomnhungnuocnao-050623-115256-800-resize.jpg" class="card-img-top img-fluid"
-              alt="Hollywood Sign on The Hill" />
+            <img src="top10quocgiaconhieunguoidungfacebooknhat2023gomnhungnuocnao-050623-115256-800-resize.jpg"
+              class="card-img-top img-fluid" alt="Hollywood Sign on The Hill" />
             <div class="card-body">
               <div class="d-flex">
                 <div class="col-md-6">
@@ -211,12 +223,11 @@
               <div class="text-end">
                 <button type="button" class="btn btn-danger" onclick="deleteService('facebook')">Xóa</button>
                 <button type="button" class="btn btn-primary" onclick="openServiceModal('facebook')">Sửa</button>
-                <button type="button" class="btn btn-success" onclick="openServiceModal()">Thêm</button>
               </div>
             </div>
           </div>
         </div>
-    
+
         <!-- Card for TikTok -->
         <div class="col-md-3 col-sm-3">
           <div class="card h-100" data-platform="tiktok" data-duration="4months" data-price="5000000">
@@ -236,12 +247,11 @@
               <div class="text-end">
                 <button type="button" class="btn btn-danger" onclick="deleteService('tiktok')">Xóa</button>
                 <button type="button" class="btn btn-primary" onclick="openServiceModal('tiktok')">Sửa</button>
-                <button type="button" class="btn btn-success" onclick="openServiceModal()">Thêm</button>
               </div>
             </div>
           </div>
         </div>
-    
+
         <!-- Card for Youtube -->
         <div class="col-md-3 col-sm-3">
           <div class="card h-100" data-platform="youtube" data-duration="2months" data-price="3000000">
@@ -261,17 +271,16 @@
               <div class="text-end">
                 <button type="button" class="btn btn-danger" onclick="deleteService('youtube')">Xóa</button>
                 <button type="button" class="btn btn-primary" onclick="openServiceModal('youtube')">Sửa</button>
-                <button type="button" class="btn btn-success" onclick="openServiceModal()">Thêm</button>
               </div>
             </div>
           </div>
         </div>
-    
+
         <!-- Card for Google -->
         <div class="col-md-3 col-sm-3">
           <div class="card h-100" data-platform="google" data-duration="1year" data-price="10000000">
-            <img src="google-data-measurement-analytics-trends-metrics-ss-1920-800x450.jpg" class="card-img-top img-fluid"
-              alt="Hollywood Sign on The Hill" />
+            <img src="google-data-measurement-analytics-trends-metrics-ss-1920-800x450.jpg"
+              class="card-img-top img-fluid" alt="Hollywood Sign on The Hill" />
             <div class="card-body">
               <div class="d-flex">
                 <div class="col-md-6">
@@ -286,48 +295,101 @@
               <div class="text-end">
                 <button type="button" class="btn btn-danger" onclick="deleteService('google')">Xóa</button>
                 <button type="button" class="btn btn-primary" onclick="openServiceModal('google')">Sửa</button>
-                <button type="button" class="btn btn-success" onclick="openServiceModal()">Thêm</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
- <!-- Modal -->
-<div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="serviceModalLabel">Thêm/Sửa Dịch Vụ</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Form để thêm hoặc sửa dịch vụ -->
-        <form>
-          <div class="mb-3">
-            <label for="serviceName" class="form-label">Tên Dịch Vụ</label>
-            <input type="text" class="form-control" id="serviceName">
-          </div>
-          <div class="mb-3">
-            <label for="servicePrice" class="form-label">Giá</label>
-            <input type="text" class="form-control" id="servicePrice">
-          </div>
-          <div class="mb-3">
-            <label for="serviceDuration" class="form-label">Thời Hạn</label>
-            <input type="text" class="form-control" id="serviceDuration">
-          </div>
-          <!-- Thêm các trường thông tin khác nếu cần -->
 
-          <button type="button" class="btn btn-success" onclick="saveService()">Lưu</button>
-        </form>
+    <div class="fixed-add-button">
+      <button type="button" class="btn btn-success btn-floating" onclick="openServiceModal()">
+        <i class="bi bi-plus-circle"></i>
+      </button>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="serviceModalLabel">Thêm/Sửa Dịch Vụ</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Form để thêm hoặc sửa dịch vụ -->
+            <form>
+              <div class="mb-3">
+                <label for="serviceName" class="form-label">Tên Dịch Vụ</label>
+                <select class="form-select" id="serviceName">
+                  <!-- Thêm các tùy chọn cho tên dịch vụ -->
+                  <option value="Facebook">Facebook</option>
+                  <option value="TikTok">TikTok</option>
+                  <option value="Youtube">Youtube</option>
+                  <option value="Google">Google</option>
+                </select>
+              </div>
+              
+              <!-- Thay thế input với select cho thời hạn -->
+              <div class="mb-3">
+                <label for="serviceDuration" class="form-label">Thời Hạn</label>
+                <select class="form-select" id="serviceDuration">
+                  <!-- Thêm các tùy chọn cho thời hạn -->
+                  <option value="1 tháng">1 tháng</option>
+                  <option value="2 tháng">2 tháng</option>
+                  <option value="4 tháng">4 tháng</option>
+                  <option value="1 năm">1 năm</option>
+                </select>
+              </div>
+              
+              <!-- Thay thế input với select cho giá -->
+              <div class="mb-3">
+                <label for="servicePrice" class="form-label">Giá</label>
+                <select class="form-select" id="servicePrice">
+                  <!-- Thêm các tùy chọn cho giá -->
+                  <option value="1.000.000 VND">1.000.000 VND</option>
+                  <option value="3.000.000 VND">3.000.000 VND</option>
+                  <option value="5.000.000 VND">5.000.000 VND</option>
+                  <option value="10.000.000 VND">10.000.000 VND</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="serviceIDCard" class="form-label">ID Card</label>
+                <input type="text" class="form-control" id="serviceIDCard" placeholder="Nhập ID Card">
+              </div>
+              <!-- Thêm các trường thông tin khác nếu cần -->
+
+              <button type="button" class="btn btn-success" onclick="saveService()">Lưu</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
+<!-- Modal Xác nhận Xóa -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Xác Nhận Xóa</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              Bạn có xác nhận xóa gói dịch vụ này chứ?!
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="cancelDeleteButton" data-dismiss="modal">Hủy</button>
+              <button type="button" class="btn btn-primary" id="confirmDeleteButton">Xác Nhận</button>
+          </div>
+      </div>
   </div>
 </div>
 
-<script src="index.js" defer></script>
-<script>
-  let editingPlatform = null;
+    <script src="index.js" defer></script>
+    <script>
+       let editingPlatform = null;
+
+function openServiceModalOutsideCard() {
+  openServiceModal();
+}
 
 function openServiceModal(platform) {
   // Mở modal và điền thông tin cũ nếu là sửa
@@ -342,6 +404,7 @@ function openServiceModal(platform) {
   const serviceNameInput = document.getElementById('serviceName');
   const servicePriceInput = document.getElementById('servicePrice');
   const serviceDurationInput = document.getElementById('serviceDuration');
+  const serviceIDCardInput = document.getElementById('serviceIDCard');
 
   // Đặt nút thành "Lưu" nếu có platform (đang sửa), "Thêm" nếu không có platform (đang thêm mới)
   const saveButton = document.querySelector('#serviceModal button.btn-success');
@@ -351,39 +414,58 @@ function openServiceModal(platform) {
     serviceNameInput.value = card.querySelector('.card-title').innerText;
     servicePriceInput.value = card.querySelector('.card-text').innerText;
     serviceDurationInput.value = card.querySelector('p:nth-child(3)').innerText;
+    serviceIDCardInput.value = card.querySelector('.service-details p').innerText.replace('ID Card: ', '');
     // Làm tương tự với các trường thông tin khác nếu có
   }
 }
 
 function deleteService(platform) {
-  // Xác định thẻ card cần xóa
-  const card = document.querySelector(`[data-platform="${platform}"]`);
+    // Xác định thẻ card cần xóa
+    const card = document.querySelector(`[data-platform="${platform}"]`);
 
-  // Xóa thẻ card nếu tồn tại
-  if (card) {
-    card.remove();
-  }
+    // Nếu thẻ card tồn tại, hiển thị modal xác nhận
+    if (card) {
+        // Hiển thị modal
+        $('#confirmDeleteModal').modal('show');
+
+        // Thiết lập sự kiện cho nút xác nhận trong modal
+        $('#confirmDeleteButton').on('click', function () {
+            // Xóa thẻ card
+            card.remove();
+
+            // Đóng modal
+            $('#confirmDeleteModal').modal('hide');
+        });
+
+        // Thiết lập sự kiện cho nút hủy bỏ trong modal
+        $('#cancelDeleteButton').on('click', function () {
+            // Đóng modal
+            $('#confirmDeleteModal').modal('hide');
+        });
+    }
 }
 
-function createNewCard(serviceName, servicePrice, serviceDuration, platform) {
+function createNewCard(serviceName, servicePrice, serviceDuration, serviceIDCard, platform) {
   // Tạo thẻ card mới
   const card = document.createElement('div');
-  card.classList = `col-md-3 col-sm-3`
+  card.classList = `col-md-3 col-sm-3`;
   card.innerHTML = `
     <div class="card h-100" data-platform="${platform}" data-duration="${serviceDuration}" data-price="${servicePrice}">
       <img src="top10quocgiaconhieunguoidungfacebooknhat2023gomnhungnuocnao-050623-115256-800-resize.jpg" class="card-img-top img-fluid" alt="Hollywood Sign on The Hill" />
       <div class="card-body">
-        <h4 class="card-title">${serviceName}</h4>
-        <p class="card-text">${servicePrice}</p>
+        <div class="d-flex">
+          <div class="col-md-6">
+            <h4 class="card-title">${serviceName}</h4>
+          </div>
+          <div class="col-md-6 text-end">
+            <h4>${serviceIDCard}</h4>
+          </div>
+        </div>
+        <h5 class="card-text">${servicePrice}</h5>
         <p>Thời hạn: ${serviceDuration}</p>
         <div class="text-end">
           <button type="button" class="btn btn-danger" onclick="deleteService('${platform}')">Xóa</button>
           <button type="button" class="btn btn-primary" onclick="openServiceModal('${platform}')">Sửa</button>
-          <button type="button" class="btn btn-success" onclick="openServiceModal()">Thêm</button>
-        </div>
-        <div class="service-details">
-          <p>Thông tin chi tiết dịch vụ ${serviceName}</p>
-          <!-- Thêm thông tin chi tiết khác nếu cần -->
         </div>
       </div>
     </div>
@@ -393,35 +475,37 @@ function createNewCard(serviceName, servicePrice, serviceDuration, platform) {
   document.querySelector('.row.service-container').appendChild(card);
 }
 
-function updateExistingCard(serviceName, servicePrice, serviceDuration, platform) {
+function updateExistingCard(serviceName, servicePrice, serviceDuration, serviceIDCard, platform) {
   // Cập nhật thẻ card cũ
   const card = document.querySelector(`[data-platform="${platform}"]`);
 
   if (card) {
-    card.setAttribute('data-duration', serviceDuration);
-    card.setAttribute('data-price', servicePrice);
-    card.querySelector('.card-title').innerText = serviceName;
-    card.querySelector('.card-text').innerText = servicePrice;
-    card.querySelector('p:nth-child(3)').innerText = `Thời hạn: ${serviceDuration}`;
+    const cardTitle = card.querySelector('.card-title');
+    const cardText = card.querySelector('.card-text');
+    const durationElement = card.querySelector('p:nth-child(3)');
+    const serviceDetails = card.querySelector('.service-details p');
+
+    if (cardTitle) cardTitle.innerText = serviceName;
+    if (cardText) cardText.innerText = servicePrice;
+    if (durationElement) durationElement.innerText = `Thời hạn: ${serviceDuration}`;
+    if (serviceDetails) serviceDetails.innerText = `ID Card: ${serviceIDCard}`;
     // Cập nhật thông tin chi tiết khác nếu có
   }
 }
+
 
 function saveService() {
   // Lấy giá trị từ các trường input
   const serviceName = document.getElementById('serviceName').value;
   const servicePrice = document.getElementById('servicePrice').value;
   const serviceDuration = document.getElementById('serviceDuration').value;
+  const serviceIDCard = document.getElementById('serviceIDCard').value;
 
-  // Lấy giá trị từ data-platform để xác định là thêm mới hay sửa
-  const platform = editingPlatform;
-
-  if (platform) {
-    // Nếu đang sửa, cập nhật card cũ
-    updateExistingCard(serviceName, servicePrice, serviceDuration, platform);
+  // Lưu giá trị như trong đoạn mã hiện tại
+  if (editingPlatform) {
+    updateExistingCard(serviceName, servicePrice, serviceDuration, serviceIDCard, editingPlatform);
   } else {
-    // Nếu đang thêm mới, tạo thẻ card mới
-    createNewCard(serviceName, servicePrice, serviceDuration, platform);
+    createNewCard(serviceName, servicePrice, serviceDuration, serviceIDCard, editingPlatform);
   }
 
   // Đặt nút thành "Thêm"
@@ -432,32 +516,53 @@ function saveService() {
   const modal = bootstrap.Modal.getInstance(document.getElementById('serviceModal'));
   modal.hide();
 }
+
 function applyFilters() {
-    // Lấy giá trị của các checkbox
-    const platformFilters = document.querySelectorAll('.platform-checkbox:checked');
-    const durationFilters = document.querySelectorAll('.duration-checkbox:checked');
-    const priceFilters = document.querySelectorAll('.price-checkbox:checked');
+  // Lấy giá trị của các checkbox
+  const platformFilters = document.querySelectorAll('.platform-checkbox:checked');
+  const durationFilters = document.querySelectorAll('.duration-checkbox:checked');
+  const priceFilters = document.querySelectorAll('.price-checkbox:checked');
 
-    // Lọc dịch vụ dựa trên các giá trị đã chọn
-    const filteredServices = document.querySelectorAll('.service-container .card');
+  // Lọc dịch vụ dựa trên các giá trị đã chọn
+  const filteredServices = document.querySelectorAll('.service-container .card');
 
-    filteredServices.forEach((service) => {
-      const platform = service.getAttribute('data-platform');
-      const duration = service.getAttribute('data-duration');
-      const price = service.getAttribute('data-price');
+  filteredServices.forEach((service) => {
+    const platform = service.getAttribute('data-platform');
+    const duration = service.getAttribute('data-duration');
+    const price = service.getAttribute('data-price');
 
-      const platformMatch = platformFilters.length === 0 || Array.from(platformFilters).some((filter) => filter.value === platform);
-      const durationMatch = durationFilters.length === 0 || Array.from(durationFilters).some((filter) => filter.value === duration);
-      const priceMatch = priceFilters.length === 0 || Array.from(priceFilters).some((filter) => filter.value === price);
+    const platformMatch = platformFilters.length === 0 || Array.from(platformFilters).some((filter) => filter.value === platform);
+    const durationMatch = durationFilters.length === 0 || Array.from(durationFilters).some((filter) => filter.value === duration);
+    const priceMatch = priceFilters.length === 0 || Array.from(priceFilters).some((filter) => filter.value === price);
 
-      if (platformMatch && durationMatch && priceMatch) {
-        service.style.display = 'block';
+    if (platformMatch && durationMatch && priceMatch) {
+      service.style.display = 'block';
+    } else {
+      service.style.display = 'none';
+    }
+  });
+}
+ // Bắt sự kiện submit form tìm kiếm
+ $('#searchForm').submit(function (event) {
+    event.preventDefault(); // Ngăn chặn form submit mặc định
+  console.log('Form submitted');
+    // Lấy giá trị từ input tìm kiếm
+    const searchTerm = $('#searchInput').val().toLowerCase();
+
+    // Lặp qua tất cả các card và ẩn/hiện card dựa trên tiêu đề và data-platform
+    $('.card').each(function () {
+      const cardTitle = $(this).find('.card-title').text().toLowerCase();
+      const dataPlatform = $(this).data('platform').toLowerCase();
+
+      // Kiểm tra nếu tiêu đề hoặc data-platform chứa giá trị tìm kiếm
+      if (cardTitle.includes(searchTerm) || dataPlatform.includes(searchTerm)) {
+        $(this).show();
       } else {
-        service.style.display = 'none';
+        $(this).hide();
       }
     });
-  }
-
-</script>
+  });
+    </script>
 </body>
+
 </html>

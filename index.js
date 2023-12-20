@@ -74,8 +74,7 @@ $(document).ready(function () {
         window.location.href = 'DichvuQC.html';
         }  
         // Lưu lại thông tin người dùng vào localStorage
-        
-        // Có thể thực hiện các hành động khác sau khi đăng nhập thành công
+// Có thể thực hiện các hành động khác sau khi đăng nhập thành công
       } else {
         // Đăng nhập thất bại
         alert('Tài khoản hoặc mật khẩu không đúng');
@@ -160,7 +159,7 @@ $(document).ready(function () {
 
   $('#applyFilterBtn').click(function () {
     const selectedPlatforms = platformCheckboxes.filter(':checked').map(function () { return this.value; }).get();
-    const selectedDurations = durationCheckboxes.filter(':checked').map(function () { return this.value; }).get();
+const selectedDurations = durationCheckboxes.filter(':checked').map(function () { return this.value; }).get();
     const minPrice = parseFloat(priceRangeFrom.val()) || 0;
     const maxPrice = parseFloat(priceRangeTo.val()) || Number.POSITIVE_INFINITY;
 
@@ -241,7 +240,7 @@ function deleteFeedback(index) {
   var feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
 
   // Xóa ý kiến theo chỉ mục
-  feedbackList.splice(index, 1);
+feedbackList.splice(index, 1);
 
   // Lưu danh sách mới vào Local Storage
   localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
@@ -274,8 +273,3 @@ function updateTable() {
       deleteFeedback(index);
   });
 }
- 
-
- 
-
-
