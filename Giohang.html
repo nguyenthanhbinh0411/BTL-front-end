@@ -189,228 +189,185 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="index.js" defer></script>
   <script>
+$(document).ready(function () {
     // Lấy thông tin đơn hàng từ local storage
     const orders = JSON.parse(localStorage.getItem('orders')) || [];
 
     // Thêm trạng thái mặc định cho đơn hàng
     orders.forEach(order => {
-      order.status = order.status || false; // Mặc định là "Chưa xử lý"
+        order.status = order.status || false; // Mặc định là "Chưa xử lý"
     });
 
     // Hiển thị danh sách đơn hàng chưa xử lý
-    const table = document.querySelector('.table tbody');
+    const table = $('.table tbody');
 
     // Trước khi thêm các đơn hàng mới, xóa tất cả các dòng hiện tại trong bảng
-    table.innerHTML = '';
+    table.empty();
 
     orders.forEach(function (order, index) {
-      // Kiểm tra xem đơn hàng đã xử lý chưa
-      if (!order.status) {
-        // Thay vì sử dụng table.insertRow(), tạo một dòng mới
-        const row = table.insertRow();
-        row.className = 'order-item';
+        // Kiểm tra xem đơn hàng đã xử lý chưa
+        if (!order.status) {
+            // Thay vì sử dụng table.insertRow(), tạo một dòng mới
+            const row = $('<tr>').addClass('order-item');
 
-        const cellIndex = document.createElement('td');
-        const cellPlatform = document.createElement('td');
-        const cellDuration = document.createElement('td');
-        const cellPrice = document.createElement('td');
-        const cellStatus = document.createElement('td'); // Thêm ô trạng thái
-        const cellViewDetail = document.createElement('td');
-        const cellActions = document.createElement('td');
+            const cellIndex = $('<td>').html(`<strong>${index + 1}</strong>`);
+            const cellPlatform = $('<td>').text(order.platform);
+            const cellDuration = $('<td>').text(order.duration);
+            const cellPrice = $('<td>').text(`${order.price} VND`);
+            
+            // Hiển thị trạng thái
+            const cellStatus = $('<td>').text(order.status ? 'Đã xử lý' : 'Chưa xử lý');
 
-        cellIndex.innerHTML = `<strong>${index + 1}</strong>`;
-        // Điều chỉnh dữ liệu hiển thị tùy thuộc vào cấu trúc đơn hàng
-        cellPlatform.innerHTML = order.platform;
-        cellDuration.innerHTML = order.duration;
-        cellPrice.innerHTML = `${order.price} VND`;
-        // Hiển thị trạng thái
-        cellStatus.innerHTML = order.status ? 'Đã xử lý' : 'Chưa xử lý';
+            // Thêm nút xem chi tiết
+            const cellViewDetail = $('<td>').html(`<button class="btn btn-primary" onclick="showDetailModal(${index})">Xem thông tin</button>`);
 
-        // Thêm nút xem chi tiết
-        cellViewDetail.innerHTML = `<button class="btn btn-primary" onclick="showDetailModal(${index})">Xem thông tin</button>`;
+            // Thêm nút xóa
+            const cellActions = $('<td>').html(`<button class="btn btn-danger btn-sm" onclick="approveOrder(${index})">Hủy đơn hàng</button>`);
 
-        // Thêm nút xóa
-        cellActions.innerHTML = `<button class="btn btn-danger btn-sm" onclick="approveOrder(${index})">Hủy đơn hàng</button>`;
+            // Thêm các ô vào dòng mới
+            row.append(cellIndex, cellPlatform, cellDuration, cellPrice, cellStatus, cellViewDetail, cellActions);
 
-        // Thêm các ô vào dòng mới
-        row.appendChild(cellIndex);
-        row.appendChild(cellPlatform);
-        row.appendChild(cellDuration);
-        row.appendChild(cellPrice);
-        row.appendChild(cellStatus);
-        row.appendChild(cellViewDetail);
-        row.appendChild(cellActions);
-
-        // Sau khi điều chỉnh dòng đơn hàng, thêm nó vào cuối bảng
-        table.appendChild(row);
-      }
+            // Sau khi điều chỉnh dòng đơn hàng, thêm nó vào cuối bảng
+            table.append(row);
+        }
     });
 
     // Hàm xem chi tiết và hiển thị modal
     function showDetailModal(index) {
-      const order = orders[index];
-      const modalBody = document.getElementById('submittedInfo');
+        const order = orders[index];
+        const modalBody = $('#submittedInfo');
 
-      modalBody.innerHTML = `
-    <table class="table table-striped table-bordered mt-3">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="row">Tiêu Đề</th>
-          <td id="submittedTitle">${order.title}</td>
-        </tr>
-        <tr>
-          <th scope="row">Ghi Đường Dẫn Link</th>
-          <td id="submittedLink">${order.link}</td>
-        </tr>
-        <tr>
-          <th scope="row">Ảnh hoặc Video</th>
-          <td id="submittedImage"><img src="${order.imageUrl}" alt="Image" style="max-width: 100%;"></td>
-        </tr>
-        <tr> <!-- Thêm dòng mới để hiển thị trạng thái -->
-          <th scope="row">Trạng thái</th>
-          <td>${order.status ? 'Đã xử lý' : 'Chưa xử lý'}</td>
-        </tr>
-      </thead>
-    </table>
-  `;
+        modalBody.html(`
+            <table class="table table-striped table-bordered mt-3">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="row">Tiêu Đề</th>
+                        <td id="submittedTitle">${order.title}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Ghi Đường Dẫn Link</th>
+                        <td id="submittedLink">${order.link}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Ảnh hoặc Video</th>
+                        <td id="submittedImage"><img src="${order.imageUrl}" alt="Image" style="max-width: 100%;"></td>
+                    </tr>
+                    <tr> <!-- Thêm dòng mới để hiển thị trạng thái -->
+                        <th scope="row">Trạng thái</th>
+                        <td>${order.status ? 'Đã xử lý' : 'Chưa xử lý'}</td>
+                    </tr>
+                </thead>
+            </table>
+        `);
 
-      // Hiển thị modal
-      const modal = new bootstrap.Modal(document.getElementById('detailModal'));
-      modal.show();
+        // Hiển thị modal
+        const modal = new bootstrap.Modal(document.getElementById('detailModal'));
+        modal.show();
     }
 
     // Hàm duyệt đơn hàng
     function approveOrder(index) {
-      const confirmation = confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');
-      if (confirmation) {
-        orders.splice(index, 1); // Xóa đơn hàng khỏi danh sách
-        localStorage.setItem('orders', JSON.stringify(orders));
-        // Sau khi xóa, cập nhật lại danh sách đơn hàng trong bảng
-        updateOrderList();
-        // Load lại trang sau khi xóa
-        location.reload();
-      }
+        const confirmation = confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');
+        if (confirmation) {
+            orders.splice(index, 1); // Xóa đơn hàng khỏi danh sách
+            localStorage.setItem('orders', JSON.stringify(orders));
+            // Sau khi xóa, cập nhật lại danh sách đơn hàng trong bảng
+            updateOrderList();
+            // Load lại trang sau khi xóa
+            location.reload();
+        }
     }
 
     // Hàm xóa đơn hàng chờ thanh toán
     function deleteOrder(index) {
-      const confirmation = confirm('Bạn có chắc chắn muốn thanh toán đơn hàng này không?');
-      if (confirmation) {
-        orders.splice(index, 1); // Xóa đơn hàng khỏi danh sách
-        localStorage.setItem('orders', JSON.stringify(orders));
-        // Sau khi xóa, cập nhật lại danh sách đơn hàng trong bảng
-        updateOrderList();
-        // Load lại trang sau khi xóa
-        location.reload();
-        // Lấy thông tin đơn hàng từ danh sách đã duyệt
-        const order = orders.filter(order => order.status)[index];
+        const confirmation = confirm('Bạn có chắc chắn muốn thanh toán đơn hàng này không?');
+        if (confirmation) {
+            orders.splice(index, 1); // Xóa đơn hàng khỏi danh sách
+            localStorage.setItem('orders', JSON.stringify(orders));
+            // Sau khi xóa, cập nhật lại danh sách đơn hàng trong bảng
+            updateOrderList();
+            // Load lại trang sau khi xóa
+            location.reload();
+            // Lấy thông tin đơn hàng từ danh sách đã duyệt
+            const order = orders.filter(order => order.status)[index];
 
-    // Chuyển hướng qua trang Thantoan.html
-    window.location.href = 'Thanhtoan.html';
-  }
-}
+            // Chuyển hướng qua trang Thantoan.html
+            window.location.href = 'Thanhtoan.html';
+        }
+    }
+
     // Hàm cập nhật lại danh sách đơn hàng trong bảng
     function updateOrderList() {
-      // Trước khi thêm các đơn hàng mới, xóa tất cả các dòng hiện tại trong bảng
-      table.innerHTML = '';
+        // Trước khi thêm các đơn hàng mới, xóa tất cả các dòng hiện tại trong bảng
+        table.empty();
 
-      orders.forEach(function (order, index) {
-        const row = table.insertRow();
-        row.className = 'order-item';
+        orders.forEach(function (order, index) {
+            const row = $('<tr>').addClass('order-item');
 
-        const cellIndex = document.createElement('td');
-        const cellPlatform = document.createElement('td');
-        const cellDuration = document.createElement('td');
-        const cellPrice = document.createElement('td');
-        const cellStatus = document.createElement('td');
-        const cellViewDetail = document.createElement('td');
-        const cellActions = document.createElement('td');
+            const cellIndex = $('<td>').html(`<strong>${index + 1}</strong>`);
+            const cellPlatform = $('<td>').text(order.platform);
+            const cellDuration = $('<td>').text(order.duration);
+            const cellPrice = $('<td>').text(`${order.price} VND`);
+            const cellStatus = $('<td>').text(order.status ? 'Đã xử lý' : 'Chưa xử lý');
 
-        cellIndex.innerHTML = `<strong>${index + 1}</strong>`;
-        // Điều chỉnh dữ liệu hiển thị tùy thuộc vào cấu trúc đơn hàng
-        cellPlatform.innerHTML = order.platform;
-        cellDuration.innerHTML = order.duration;
-        cellPrice.innerHTML = `${order.price} VND`;
-        cellStatus.innerHTML = order.status ? 'Đã xử lý' : 'Chưa xử lý';
+            // Thêm nút xem chi tiết
+            const cellViewDetail = $('<td>').html(`<button class="btn btn-primary" onclick="showDetailModal(${index})">Xem thông tin</button>`);
 
-        // Thêm nút xem chi tiết
-        cellViewDetail.innerHTML = `<button class="btn btn-primary" onclick="showDetailModal(${index})">Xem thông tin</button>`;
+            // Thêm nút xóa
+            const cellActions = $('<td>').html(`<button class="btn btn-primary btn-sm" onclick="approveOrder(${index})" ${order.status ? 'disabled' : ''}>Duyệt</button>`);
 
-        // Thêm nút xóa
-        cellActions.innerHTML = `<button class="btn btn-primary btn-sm" onclick="approveOrder(${index})" ${order.status ? 'disabled' : ''}>Duyệt</button>`;
+            // Thêm các ô vào dòng mới
+            row.append(cellIndex, cellPlatform, cellDuration, cellPrice, cellStatus, cellViewDetail, cellActions);
 
-        // Thêm các ô vào dòng mới
-        row.appendChild(cellIndex);
-        row.appendChild(cellPlatform);
-        row.appendChild(cellDuration);
-        row.appendChild(cellPrice);
-        row.appendChild(cellStatus);
-        row.appendChild(cellViewDetail);
-        row.appendChild(cellActions);
-
-        // Sau khi điều chỉnh dòng đơn hàng, thêm nó vào cuối bảng
-        table.appendChild(row);
-      });
+            // Sau khi điều chỉnh dòng đơn hàng, thêm nó vào cuối bảng
+            table.append(row);
+        });
     }
 
     // Xóa tham số URL sau khi đóng modal
     $('#detailModal').on('hidden.bs.modal', function (event) {
-      clearURLParameters();
+        clearURLParameters();
     });
 
     // Xóa tham số URL
     function clearURLParameters() {
-      const newURL = window.location.origin + window.location.pathname;
-      window.history.replaceState({}, document.title, newURL);
+        const newURL = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, newURL);
     }
 
     // Hiển thị danh sách đơn hàng đã duyệt và chờ thanh toán
-    const approvedTable = document.getElementById('approvedOrders').querySelector('tbody');
+    const approvedTable = $('#approvedOrders tbody');
 
     // Trước khi thêm các đơn hàng mới, xóa tất cả các dòng hiện tại trong bảng đã duyệt
-    approvedTable.innerHTML = '';
+    approvedTable.empty();
 
     orders.forEach(function (order, index) {
-      // Kiểm tra xem đơn hàng đã duyệt và chờ thanh toán chưa
-      if (order.status && !order.paymentStatus) {
-        // Thay vì sử dụng table.insertRow(), tạo một dòng mới
-        const row = approvedTable.insertRow();
-        row.className = 'order-item';
+        // Kiểm tra xem đơn hàng đã duyệt và chờ thanh toán chưa
+        if (order.status && !order.paymentStatus) {
+            // Thay vì sử dụng table.insertRow(), tạo một dòng mới
+            const row = $('<tr>').addClass('order-item');
 
-        const cellIndex = document.createElement('td');
-        const cellPlatform = document.createElement('td');
-        const cellDuration = document.createElement('td');
-        const cellPrice = document.createElement('td');
-        const cellStatus = document.createElement('td');
-        const cellPayment = document.createElement('td'); // Thêm ô thanh toán
-        const cellViewDetail = document.createElement('td');
+            const cellIndex = $('<td>').html(`<strong>${index + 1}</strong>`);
+            const cellPlatform = $('<td>').text(order.platform);
+            const cellDuration = $('<td>').text(order.duration);
+            const cellPrice = $('<td>').text(`${order.price} VND`);
+            const cellStatus = $('<td>').text('Đã xử lý');
 
-        cellIndex.innerHTML = `<strong>${index + 1}</strong>`;
-        // Điều chỉnh dữ liệu hiển thị tùy thuộc vào cấu trúc đơn hàng
-        cellPlatform.innerHTML = order.platform;
-        cellDuration.innerHTML = order.duration;
-        cellPrice.innerHTML = `${order.price} VND`;
-        // Hiển thị trạng thái
-        cellStatus.innerHTML = 'Đã xử lý';
-        // Hiển thị thanh toán
-        cellPayment.innerHTML = `<button class="btn btn-primary" onclick="deleteOrder(${index})">Thanh toán</button>`;
+            // Hiển thị thanh toán
+            const cellPayment = $('<td>').html(`<button class="btn btn-primary" onclick="deleteOrder(${index})">Thanh toán</button>`);
 
-        // Thêm nút xem chi tiết
-        cellViewDetail.innerHTML = `<button class="btn btn-primary" onclick="showDetailModal(${index})">Xem thông tin</button>`;
+            // Thêm nút xem chi tiết
+            const cellViewDetail = $('<td>').html(`<button class="btn btn-primary" onclick="showDetailModal(${index})">Xem thông tin</button>`);
 
-        // Thêm các ô vào dòng mới
-        row.appendChild(cellIndex);
-        row.appendChild(cellPlatform);
-        row.appendChild(cellDuration);
-        row.appendChild(cellPrice);
-        row.appendChild(cellStatus);
+            // Thêm các ô vào dòng mới
+            row.append(cellIndex, cellPlatform, cellDuration, cellPrice, cellStatus, cellViewDetail, cellPayment);
 
-        row.appendChild(cellViewDetail);
-        row.appendChild(cellPayment);
-        // Sau khi điều chỉnh dòng đơn hàng, thêm nó vào cuối bảng đã duyệt
-        approvedTable.appendChild(row);
-      }
+            // Sau khi điều chỉnh dòng đơn hàng, thêm nó vào cuối bảng đã duyệt
+            approvedTable.append(row);
+        }
     });
+});
+
   </script>
 </body>
 
