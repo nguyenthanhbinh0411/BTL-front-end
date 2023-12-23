@@ -47,14 +47,14 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <!-- Icon: Xét duyệt thông tin -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#" aria-expanded="false">
+                        <a class="nav-link" href="Nhanvien.html" aria-expanded="false">
                             <i class="bi bi-check-circle"></i> Xét duyệt thông tin
                         </a>
                     </li>
 
                     <!-- Icon: Nhận phản hồi khách hàng -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#" aria-expanded="false">
+                        <a class="nav-link" href="phanhoiykien.html" aria-expanded="false">
                             <i class="bi bi-chat-dots"></i> Nhận phản hồi khách hàng
                         </a>
                     </li>
@@ -129,7 +129,6 @@
     <script src="index.js" defer></script>
     <script>
        $(document).ready(function () {
-       $(document).ready(function () {
     $("#sendInvoiceButton").click(function () {
         // Lấy dữ liệu từ form
         var customerName = $("#customerName").val();
@@ -137,20 +136,26 @@
         var servicePackageID = $("#servicePackageID").val();
         var price = $("#price").val();
 
-        // Tạo đối tượng để lưu trữ dữ liệu hóa đơn
-        var invoiceData = {
-            customerName: customerName,
-            transactionCode: transactionCode,
-            servicePackageID: servicePackageID,
-            price: price
-        };
+        // Kiểm tra xem các trường dữ liệu có giá trị không
+        if (customerName && transactionCode && servicePackageID && price) {
+            // Tạo đối tượng để lưu trữ dữ liệu hóa đơn
+            var invoiceData = {
+                customerName: customerName,
+                transactionCode: transactionCode,
+                servicePackageID: servicePackageID,
+                price: price
+            };
 
-        // Lưu dữ liệu vào Local Storage
-        localStorage.setItem('invoiceData', JSON.stringify(invoiceData));
+            // Lưu dữ liệu vào Local Storage
+            localStorage.setItem('invoiceData', JSON.stringify(invoiceData));
+            alert("Hóa đơn đã được gửi đi!");
 
-        // Chuyển hướng đến trang nhận hóa đơn
-        window.location.href = "Nhanvien.html";
-        alert("Hóa đơn đã được gửi đi!");
+            // Chuyển hướng đến trang nhận hóa đơn
+            window.location.href = "Nhanvien.html";
+        } else {
+            // Nếu có trường nào đó trống, thông báo cho người dùng
+            alert("Vui lòng điền đầy đủ thông tin trước khi gửi hóa đơn.");
+        }
     });
 });
     </script>
